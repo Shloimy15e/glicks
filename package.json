@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "updateSchema": "node ./src/scripts/updateSchema.mjs",
+    "updateSchema": "node ./src/scripts/updateSchema.cjs",
+    "addMissingFields": "node ./src/scripts/updateItemsFields.cjs",
     "generateRouter": "node ./src/scripts/generateRouter.cjs",
     "dev": "npm run generateRouter && vite",
     "prebuild": "npm run updateSchema",
