@@ -12,7 +12,7 @@
                                 class="h-full w-full object-cover object-center" />
                         </div>
                         <h3 class="mt-6 text-sm text-gray-500">
-                            <RouterLink :to="callout.href">
+                            <RouterLink :to="callout.to">
                                 <span class="absolute inset-0" />
                                 {{ callout.name }}
                             </RouterLink>
@@ -36,28 +36,28 @@ const callouts = [
         description: 'Here you can add as many items as needed',
         imageSrc: addItems,
         imageAlt: 'StockCake.com Delectable Bakery Display.',
-        href: '/admin/addItems',
+        to: '/admin/addItems',
     },
     {
         name: 'Add new category',
         description: 'Here you can add a category',
         imageSrc: addCategory,
         imageAlt: 'pexels-solliefoto',
-        href: './addCategory',
+        to: './addCategory',
     },
     {
         name: 'Edit Items',
         description: 'Edit and delete items',
         imageSrc: editItems,
         imageAlt: 'pexels-igor-ovsyannykov',
-        href: './editItems',
+        to: './editItems',
     },
     {
         name: 'Edit Categories',
         description: 'Edit and delete categories',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-04.jpg',
         imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-        href: './editCategories',
+        to: './editCategories',
     },
 ]
 </script>
