@@ -2,16 +2,12 @@
   <header class="bg-white">
     <!-- Banner on top of nav that has location and contact info -->
     <div class="bg-gradient-to-r from-rose-400 to-rose-600 h-min">
-      <span class=" flex md:flex items-center justify-between px-4 py-1 text-sm font-medium text-white">
-        <p class="hidden sm:flex items-center justify-start">
-          <a href="tel:+025373737" class="text-white hover:fill-white flex items-center">
-            <PhoneIcon class="fill-white stroke-gray-50 w-3 hidden md:block" /><span class="text-white">
-              &nbsp; IL: 025-373737 &nbsp;</span>
+      <div class=" flex items-center justify-between px-4 py-1 text-sm font-medium text-white">
+        <p class="group hidden sm:flex items-center justify-start">
+          <PhoneIcon class="fill-white stroke-gray-50 w-3 hidden md:block" />
+          <a v-for="phonenumber in phonenumbers" :href="phonenumber.href" class="text-white hover:text-amber-200 flex items-center">
+             {{ phonenumber.name }}: {{ phonenumber.number }} 
           </a>
-          <a href="tel:+44 20 7123 4567" class="hidden md:block text-white"><span class="text-white">
-            &nbsp; UK: +44 20 7123 4567 &nbsp;</span></a>
-          <a href="tel:(555) 555-1234" class="text-white hidden lg:block"><span class="text-white">
-            &nbsp; US: (555) 555-1234</span></a>
         </p>
         <p>
           <span>
@@ -21,7 +17,7 @@
             </span>
           </span>
         </p>
-      </span>
+      </div>
     </div>
 
     <nav class="flex items-center md:gap-10 justify-between py-2 lg:py-3 pl-1 lg:pl-2 pr-4 lg:pr-6"
@@ -106,11 +102,13 @@
 
 <script setup>
 import { inject, ref } from 'vue';
+import { RouterLink, useRouter } from 'vue-router';
+import phonenumbers from '@/assets/data/phonenumbers.json';
 import Logo from './Logo.vue';
 import Search from './Search.vue';
 import { Dialog, DialogPanel } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
-import { RouterLink, useRouter } from 'vue-router';
+
 
 const navigation = [
   { name: 'Cakes' },
