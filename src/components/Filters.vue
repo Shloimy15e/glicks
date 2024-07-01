@@ -4,9 +4,12 @@
     <div class="p-2 sm:hidden  flex justify-between gap-10">
       <Search class=" grid sm:hidden" />
       <button type="button"
-        class="flex text-sm font-medium leading-6 h-fit text-gray-700 hover:text-gray-900 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 sm:hidden"
+        class="flex items-center text-sm font-medium leading-6 h-fit text-gray-700 hover:text-gray-900 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 sm:hidden"
         @click="toggleFiltersMobile">
         Filters
+        <span class="ml-1.5 rounded-full bg-amber-100 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
+          {{ amountCheckedFilters }}
+        </span>
       </button>
     </div>
     <!-- Mobile filter dialog -->
@@ -36,46 +39,59 @@
 
               <!-- Filters for mobile -->
               <form class="mt-4">
-                <!-- Category filter -->
+                <!-- Category filter mobile -->
                 <Disclosure as="div" class="border-t border-gray-200 px-4 py-6" v-slot="{ open }">
                   <h3 class="-mx-2 -my-3 flow-root">
                     <DisclosureButton
-                      class="flex w-full items-center justify-between bg-white hover:bg-amber-100 active:bg-amber-200 px-2 py-3 text-sm text-gray-900">
-                      <span class="font-medium text-gray-900">Categories</span>
-                      <span
-                        class="ml-1.5 rounded-lg bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
-                        {{ amountCheckedCategories }}
-                      </span>
-                      <span class="ml-6 flex items-center">
+                      class="w-full flex justify-between bg-gray-50 hover:bg-amber-100 active:bg-amber-200 px-2 py-3 text-sm text-gray-900">
+                      <div class="flex items-center justify-start">
+                        <span class="font-medium text-gray-900">
+                          Categories
+                        </span>
+                        <span
+                          class="ml-2 rounded-full w-5 aspect-1 bg-gray-200 text-sm font-semibold tabular-nums text-gray-700">
+                          {{ amountCheckedCategories }}
+                        </span>
+                      </div>
+                      <div class="ml-6 flex items-center justify-end">
                         <ChevronDownIcon :class="[open ? '-rotate-180' : 'rotate-0', 'h-5 w-5 transform']"
                           aria-hidden="true" />
-                      </span>
+                      </div>
                     </DisclosureButton>
                   </h3>
-                  <DisclosurePanel class="pt-6">
-                    <div class="space-y-6">
-                      <div v-for="category in categories" :key="category.id" class="flex items-center">
+                  <DisclosurePanel class="pt-6 bg-inheit">
+                    <ul class="w-full grid grid-cols-2 gap-3 rounded-lg border border-gray-200 custom-border">
+                      <li v-for="(category, index) in categories" :key="category.id"
+                        :class="['w-full border-b border-gray-200 p-2 flex items-center justify-start', { 'border-none': index === categories.length - 1 }]">
                         <input :id="`category-${category.id}`" :name="`category-${category.id}`"
                           :value="category.checked" type="checkbox" :checked="category.checked"
                           v-model="category.checked" @click.stop
                           class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                        <label :for="`category-${category.id}`" class="ml-3 text-sm text-gray-500">
+                        <label :for="`category-${category.id}`"
+                          class="ml-3 whitespace-nowrap pr-6 text-sm font-medium text-gray-900">
                           {{ category.name }}
                         </label>
-                      </div>
-                    </div>
+                      </li>
+                    </ul>
                   </DisclosurePanel>
                 </Disclosure>
-                <!-- Milchig filter -->
+                <!-- Milchig filter mobile -->
                 <Disclosure as="div" class="px-4 py-6" v-slot="{ open }">
                   <h3 class="-mx-2 -my-3 flow-root">
                     <DisclosureButton
-                      class="flex w-full items-center justify-between bg-white hover:bg-amber-100 active:bg-amber-200 px-2 py-3 text-sm text-gray-900">
-                      <span class="font-medium text-gray-900">Milk/Parve</span>
-                      <span class="ml-6 flex items-center">
+                      class="w-full flex justify-between bg-gray-50 hover:bg-amber-100 active:bg-amber-200 px-2 py-3 text-sm text-gray-900">
+                      <div class="flex items-center justify-start">
+                        <span class="font-medium text-gray-900">
+                          Milk/Parve
+                        </span>
+                        <span class="ml-2 rounded-full w-5 aspect-1"
+                          :class="checkedMilkOptions === 'Both' ? 'bg-gray-500' : checkedMilkOptions === 'Milk' ? 'bg-blue-600' : 'bg-green-500'">
+                        </span>
+                      </div>
+                      <div class="ml-6 flex items-center justify-end">
                         <ChevronDownIcon :class="[open ? '-rotate-180' : 'rotate-0', 'h-5 w-5 transform']"
                           aria-hidden="true" />
-                      </span>
+                      </div>
                     </DisclosureButton>
                   </h3>
                   <DisclosurePanel class="pt-6">
@@ -100,6 +116,49 @@
                   </DisclosurePanel>
                 </Disclosure>
               </form>
+              <!-- Active filters mobile -->
+              <div
+                class="mx-auto w-11/12 bg-gray-50 grid grid-cols-1 gap-y-3 items-center justify-between px-2 py-1 rounded-2xl"
+                :class="amountCheckedFilters ? 'p-2' : 'p-1'">
+                <div class="flex items-center"
+                  :class="amountCheckedFilters ? 'justify-center border-b pb-2' : 'justify-start'">
+                  <h3
+                    class="text-sm font-medium text-gray-500 border-r border-gray-300 pr-3 flex items-center justify-center"
+                    :class="!amountCheckedFilters ? 'border-r pr-3' : 'border-none pr-0'">
+                    Filters
+                    <span class="sr-only">active</span>
+                    <span
+                      class="flex justify-center ml-2 rounded-full w-5 aspect-1 bg-gray-200 text-sm font-semibold tabular-nums text-gray-700">
+                      {{ amountCheckedFilters }}
+                    </span>
+                  </h3>
+                  <span v-if="!amountCheckedFilters" class="pl-3 text-sm font-medium text-gray-500">No active
+                    filters</span>
+                </div>
+                <div v-if="amountCheckedFilters" class="flex justify-start items-center">
+                  <div class="mt-2 sm:ml-4 sm:mt-0 flex justify-between">
+                    <div class="-m-1 flex flex-wrap items-center">
+                      <span v-for="activeFilter in activeFilters" :key="activeFilter.name"
+                        class="m-1 inline-flex items-center rounded-full border border-gray-200 bg-white py-1.5 pl-3 pr-2 text-sm font-medium text-gray-900">
+                        <span>{{ activeFilter.name }}</span>
+                        <button type="button" @click="removeFilter(activeFilter)" :value="activeFilter.name"
+                          class="ml-1 inline-flex h-5 w-5 flex-shrink-0 rounded-full p-1 -mb-0.5 text-gray-600 hover:text-gray-700 bg-gray-200 hover:bg-amber-100 active:bg-amber-200">
+                          <span class="sr-only">Remove filter for {{ activeFilter.name }}</span>
+                          <svg class="h-3 w-3" stroke="currentColor" fill="none" viewBox="0 0 8 8">
+                            <path stroke-linecap="round" stroke-width="1.5" d="M1 1l6 6m0-6L1 7" />
+                          </svg>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div v-if="amountCheckedFilters" class="flex justify-center items-center">
+                  <button @click="removeFilter('clearAll')" v-if="amountCheckedFilters"
+                    class="bg-amber-50 w-full rounded-xl hover:bg-amber-100 active:bg-amber-200">
+                    Clear all
+                  </button>
+                </div>
+              </div>
             </DialogPanel>
           </TransitionChild>
         </div>
@@ -116,9 +175,10 @@
         <ChevronDownIcon :class="{ 'transform rotate-180': filtersVisible }"
           class="h-5 w-5 text-gray-500 transition-transform mr-auto" aria-hidden="true" />
       </div>
-      <span v-if="activeFilters && !filtersVisible" class="flex items-center pl-2 border-l-2 border-l-gray-400 h-full"> 
-        {{ activeFilters.length }} Active filter 
-        <span v-if="activeFilters.length > 1">s</span>
+      <span v-if="amountCheckedFilters && !filtersVisible"
+        class="flex items-center pl-2 border-l border-l-gray-400 h-full">
+        {{ amountCheckedFilters }} Active filter
+        <span v-if="amountCheckedFilters > 1">s</span>
       </span>
     </button>
     <section v-if="filtersVisible" aria-labelledby="filter-heading" class="hidden sm:block">
@@ -208,14 +268,14 @@
       <!-- Active filters -->
       <div>
         <div class="mx-auto max-w-7xl px-4 flex items-center justify-between sm:px-6 lg:px-8"
-          :class="activeFilters ? 'p-2' : 'p-1'">
+          :class="amountCheckedFilters ? 'p-2' : 'p-1'">
           <div class="flex justify-start items-center">
-            <h3 class="text-sm font-medium text-gray-500 border-r-2 border-r-gray-300 pr-3">
+            <h3 class="text-sm font-medium text-gray-500 border-r border-r-gray-300 pr-3">
               Filters
               <span class="sr-only">active</span>
               <span
                 class="ml-1.5 rounded-lg bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
-                {{ checkedFilters }}
+                {{ amountCheckedFilters }}
               </span>
             </h3>
             <div class="mt-2 sm:ml-4 sm:mt-0 flex justify-between">
@@ -235,7 +295,7 @@
             </div>
           </div>
           <div>
-            <button @click="removeFilter('clearAll')" v-if="activeFilters"
+            <button @click="removeFilter('clearAll')" v-if="amountCheckedFilters"
               class="bg-white hover:bg-amber-100 active:bg-amber-200">
               Clear all
             </button>
@@ -300,7 +360,7 @@ const checkedMilkOptions = computed(() => {
   }
 })
 
-const checkedFilters = computed(() => {
+const amountCheckedFilters = computed(() => {
   let numFilters = amountCheckedCategories.value;
   if (checkedMilkOptions.value === "Milk" || checkedMilkOptions.value === "Parve") {
     numFilters += 1;
@@ -339,10 +399,6 @@ const activeFilters = computed(() => {
   }
 })
 
-watch(activeFilters, (newFilters) => {
-  console.log(newFilters)
-})
-
 function removeFilter(activeFilter) {
   if (activeFilter == 'clearAll') {
     categories.value.forEach((category) => {
@@ -372,13 +428,36 @@ const emits = defineEmits(['update:categories', 'update:milk'])
 
 
 watch(checkedMilkOptions, (newMilkOptions) => {
-  console.log('Milk options changed to: ', newMilkOptions)
   emits('update:milk', newMilkOptions);
 })
 
 watch(checkedCategories, (newCategories) => {
-  console.log('Categories changed. Now checked: ', newCategories)
   emits('update:categories', newCategories);
 }, { deep: true });
 
 </script>
+
+<style scoped>
+.custom-border {
+  position: relative;
+}
+
+.custom-border::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  width: 0.5px;
+  height: calc(100% - 20px);
+  /* Adjust based on top and bottom */
+  background-color: #e5e7eb;
+  /* Tailwind's gray-200 */
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.custom-border li:nth-child(2n-1):nth-last-child(2) {
+  border-bottom: none;
+}
+</style>
