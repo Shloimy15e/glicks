@@ -32,7 +32,7 @@ In a local enviroment, there is an admin interface at /admin and netlify functio
 
 After pulling the repo a `.env.local` file has to be create with the following code:
 
-```
+```.env
 VITE_LOCAL_ENV=true
 ```
 
