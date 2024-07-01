@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "updateSchema": "node ./src/scripts/updateSchema.mjs",
+    "updateSchema": "node ./src/scripts/updateSchema.cjs",
+    "addMissingFields": "node ./src/scripts/updateItemsFields.cjs",
     "generateRouter": "node ./src/scripts/generateRouter.cjs",
     "dev": "npm run generateRouter && vite",
     "prebuild": "npm run updateSchema",
@@ -27,6 +28,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "fuse.js": "^7.0.0",
     "netlify-lambda": "^2.0.16",
     "serverless-http": "^3.2.0",
     "sharp": "^0.33.4",

@@ -19,6 +19,14 @@ They will be partially displayed with the rest shown on a seperate page for each
 
 The items can be filtered by category and by Milk/Parve status.
 
+* [ ]  I will Iyh add an allergens filter and possibly a tags filter.
+
+### Search
+
+users van search for items using the search bar, accuracy may vary.
+
+* [ ]  I will Iyh add tags to search if necessary
+
 ## How items and categories will be added:
 
 Items will only be added by developers, by pulling the repo and running the site locally.
@@ -28,7 +36,7 @@ In a local enviroment, there is an admin interface at /admin and netlify functio
 
 After pulling the repo a `.env.local` file has to be create with the following code:
 
-```
+```.env
 VITE_LOCAL_ENV=true
 ```
 
@@ -45,10 +53,6 @@ when the deploys gets built; see [package.json](/package.json) and [netlify.toml
 - The site will not have any ordering logic; there will only be contact info and
   item info.
 - The site will not have any kind of payment functionality.
-
-## The site might have
-
-- The site might have a search function but limited to the front end
 
 ## Other info about this project
 

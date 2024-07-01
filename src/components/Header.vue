@@ -45,25 +45,7 @@
         </RouterLink>
       </div>
       <!--Search bar-->
-      <div class="grid grid-cols-1 grid-flow-row">
-        <div class="hidden md:flex items-center max-w-md mx-auto bg-gray-50 rounded-lg text-gray-500"
-          x-data="{ search: '' }">
-          <div class="w-full">
-            <input type="search" class="w-full px-4 py-1 text-gray-800 rounded-full focus:outline-none bg-gray-50"
-              placeholder="search" v-model="search">
-          </div>
-          <div>
-            <button type="submit"
-              class="flex items-center justify-center w-12 h-12 text-gray-500 rounded-r-lg rounded-l-none disabled:bg-gray-500"
-              :class="(search.length > 0) ? 'bg-amber-200 hover:bg-amber-300' : 'bg-amber-100 hover:bg-amber-100 text-gray-300 disabled'">
-              <div class=" w-36">
-                <MagnifyingGlassIcon class="h-4 w-auto stroke-2" aria-hidden="true" />
-              </div>
-            </button>
-          </div>
-        </div>
-        <span v-if="(search.length > 0)" class="text-gray-500 text-start ml-3 mt-0.5">search for: {{ search }}</span>
-      </div>
+      <Search class="hidden md:grid" />
       <!--Currency selector -->
       <label for="currency-selector" class="sr-only">Currency</label>
       <div class="mr-8 flex-shrink-0">
@@ -72,12 +54,8 @@
           <option class="bg-gray-100 font-sans" v-for="currency in currencies" :key="currency">{{ currency }}
           </option>
         </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center">
-          <ChevronDownIcon class="h-5 w-5 text-gray-500" aria-hidden="true" />
-        </div>
       </div>
-
-
+      <!--Mobile menu button-->
       <div class="flex">
         <button type="button"
           class="inline-flex items-center justify-center rounded-md p-2 text-gray-900 bg-gray-200 hover:bg-amber-100 active:bg-amber-200"
@@ -93,10 +71,10 @@
       <DialogPanel
         class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div class="flex items-center justify-between">
-          <a href="#" class="-m-1.5 p-1.5">
+          <RouterLink to="/" class="-m-1.5 p-1.5">
             <span class="sr-only">Glicks Bakery</span>
             <img class="h-14 w-auto rounded-full" src="/favicon/favicon-glicks.png" alt="" />
-          </a>
+          </RouterLink>
           <button type="button"
             class="-m-2.5 rounded-md p-2.5 text-gray-800 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 active:border-none"
             @click="mobileMenuOpen = false">
@@ -127,17 +105,12 @@
 </template>
 
 <script setup>
-import { inject, ref, watch } from 'vue'
-import Logo from './Logo.vue'
+import { inject, ref } from 'vue';
+import Logo from './Logo.vue';
+import Search from './Search.vue';
 import { Dialog, DialogPanel } from '@headlessui/vue';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon, PhoneIcon, TruckIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
-
-// define x data for search bar
-const search = ref('')
-const updateSearch = (event) => {
-  search.value = event.target.value
-}
-
+import { Bars3Icon, XMarkIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
+import { RouterLink } from 'vue-router';
 
 const navigation = [
   { name: 'Cakes' },
