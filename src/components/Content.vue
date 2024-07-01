@@ -1,11 +1,12 @@
 <template>
   <Filters @update:milk="handleMilkOptionsUpdate"
-    @update:categories="handleCategoriesUpdate" />
-  <div class="">
+    @update:categories="handleCategoriesUpdate" 
+    :searching="searching"/>
+  <div>
     <!-- Mobile menu -->
     <main>
       <!-- Hero section -->
-      <div v-if="!searching"
+      <div v-if="!searching && !noItems"
         class="relative w-full py-12 px-12 bg-amber-950">
         <div class="relative z-10 text-center my-20 md:my-48">
           <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-12">

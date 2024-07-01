@@ -1,6 +1,6 @@
 <template>
   <div class="grid-cols-1 grid-flow-row">
-    <div class="items-center max-w-md mx-auto rounded-full sm:rounded-lg bg-gray-50 text-gray-500 flex">
+    <div class="items-center w-full mx-auto rounded-full sm:rounded-lg bg-gray-50 text-gray-500 flex">
       <input type="search" class="w-full px-4 py-1 bg-inherit text-gray-800 rounded-full focus:outline-none"
         placeholder="search" v-model="search"
         :title="(search.length > 0) ? 'Search all items' : 'Type something to enable search button'"
