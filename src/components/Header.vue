@@ -54,9 +54,6 @@
           <option class="bg-gray-100 font-sans" v-for="currency in currencies" :key="currency">{{ currency }}
           </option>
         </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center">
-          <ChevronDownIcon class="h-5 w-5 text-gray-500" aria-hidden="true" />
-        </div>
       </div>
       <!--Mobile menu button-->
       <div class="flex">
@@ -112,7 +109,7 @@ import { inject, ref } from 'vue';
 import Logo from './Logo.vue';
 import Search from './Search.vue';
 import { Dialog, DialogPanel } from '@headlessui/vue';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
+import { Bars3Icon, XMarkIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
 import { RouterLink } from 'vue-router';
 
 const navigation = [
