@@ -1,9 +1,10 @@
 <template>
   <div class="p-2 sm:p-0 bg-gray-100">
     <!-- Mobile search bar and toggle filter button -->
-    <div class="p-2 sm:hidden  flex justify-between gap-10">
-      <Search class=" grid sm:hidden" />
-      <button type="button"
+    <div class="p-2 sm:hidden w-full flex justify-between gap-10"
+      :class="searching ? 'justify-center' : 'justify-between'">
+      <Search class="grid sm:hidden w-full" />
+      <button type="button" v-if="!searching"
         class="flex items-center text-sm font-medium leading-6 h-fit text-gray-700 hover:text-gray-900 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 sm:hidden"
         @click="toggleFiltersMobile">
         Filters
@@ -13,7 +14,7 @@
       </button>
     </div>
     <!-- Mobile filter dialog -->
-    <TransitionRoot as="template" :show="filtersVisibleMobile">
+    <TransitionRoot as="template" :show="filtersVisibleMobile" v-if="!searching">
       <Dialog class="relative z-40 sm:hidden">
         <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0"
           enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100"
@@ -168,7 +169,7 @@
     <!-- Filters for lg screens -->
     <!-- Toggle Button for filters for lg screens -->
     <button @click="toggleFilters" :class="['hidden sm:flex items-center justify-between w-full h-min leading-none bg-gray-100 hover:bg-amber-100 active:bg-amber-200',
-      filtersVisible ? 'p-1' : 'p-2.5 xl:p-3']">
+      filtersVisible ? 'p-1' : 'p-2.5 xl:p-3']" v-if="!searching">
       <div class="flex items-center">
         <span v-if="filtersVisible" class="text-xs">Hide Filters</span>
         <span v-else>Filters</span>
@@ -181,7 +182,7 @@
         <span v-if="amountCheckedFilters > 1">s</span>
       </span>
     </button>
-    <section v-if="filtersVisible" aria-labelledby="filter-heading" class="hidden sm:block">
+    <section v-if="filtersVisible && !searching" aria-labelledby="filter-heading" class="hidden sm:block">
       <h2 id="filter-heading" class="sr-only">Filters</h2>
       <div class="border-b border-gray-200 bg-white p-3">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -325,6 +326,10 @@ import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import Search from './Search.vue'
 import categoriesData from '../assets/data/categories.json'
+
+const props = defineProps({
+  searching:Boolean
+})
 
 const categories = ref(categoriesData)
 const milkOptions = ref([])

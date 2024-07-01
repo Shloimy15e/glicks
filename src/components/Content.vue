@@ -1,7 +1,8 @@
 <template>
   <Filters @update:milk="handleMilkOptionsUpdate"
-    @update:categories="handleCategoriesUpdate" />
-  <div class="">
+    @update:categories="handleCategoriesUpdate" 
+    :searching="searching"/>
+  <div>
     <!-- Mobile menu -->
     <main>
       <!-- Hero section -->
