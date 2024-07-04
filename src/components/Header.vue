@@ -3,14 +3,15 @@
     <!-- Banner on top of nav that has location and contact info -->
     <div class="bg-gradient-to-r from-rose-400 to-rose-600 h-min">
       <div class=" flex items-center justify-between px-4 py-1 text-sm font-medium text-white">
-        <p class="group hidden lg:flex items-center justify-start">
+        <p class="group hidden sm:flex items-center justify-start">
           <PhoneIcon class="fill-white stroke-gray-50 w-3" />
-          <a v-for="phonenumber in phonenumbers" :href="phonenumber.href"
-            class="text-white hover:text-amber-200 flex items-center">
+          <a v-for="(phonenumber, index) in phonenumbers" :href="phonenumber.href"
+            class="text-white hover:text-amber-200 flex items-center"
+            :class="index === 2 ? 'hidden lg:flex' : 'flex', index === 1 ? 'hidden md:flex' : 'flex'">
              {{ phonenumber.name }}: {{ phonenumber.number }} 
           </a>
         </p>
-        <p class="hidden sm:flex lg:hidden items-center justify-start group hover:cursor-pointer">
+        <p class="hidden vsm:flex sm:hidden items-center justify-start group hover:cursor-pointer">
           <PhoneIcon class="fill-white stroke-inherit group-hover:fill-amber-200 w-3" /> 
           <a class="text-white group-hover:text-amber-200" href="#contact-us">Contact us</a>
         </p>
@@ -39,8 +40,8 @@
         </RouterLink>
       </Logo>
       <!--Top nav items-->
-      <div class="hidden lg:flex gap-x-0 xl:gap-x-12 justify-between ml-16">
-        <RouterLink :to="`/categories/category/${item.name.toLowerCase()}`" v-for="item in navigation" :key="item.name"
+      <div class="hidden lg:flex gap-0 lg:gap-24 xl:gap-14 justify-between">
+        <RouterLink :to="item.to" v-for="item in navigation" :key="item.name"
           class="text-xl lg:text-2xl font-extrabold font-cherrySwashScript leading-6 h-min rounded-md py-3 px-2 lg:px-3 text-gray-900 hover:bg-amber-100 hover:text-black flex-shrink-0">
           {{ item.name }}
         </RouterLink>
@@ -86,7 +87,7 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-              <RouterLink :to="`/categories/category/${item.name.toLowerCase()}`" v-for="item in navigation"
+              <RouterLink :to="item.to" v-for="item in navigation"
                 :key="item.name" @click="mobileMenuOpen = false"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 bg-none hover:bg-amber-100 hover:text-black">
                 {{ item.name }}
@@ -106,7 +107,7 @@
 </template>
 
 <script setup>
-import { inject, ref } from 'vue';
+import { inject, ref, computed } from 'vue';
 import { RouterLink, useRouter } from 'vue-router';
 import phonenumbers from '@/assets/data/phonenumbers.json';
 import Logo from './Logo.vue';
@@ -115,11 +116,60 @@ import { Dialog, DialogPanel } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
 
 
-const navigation = [
-  { name: 'Cakes' },
-  { name: 'Cookies' },
-  { name: 'Kedeishim' }
-]
+const navigation = computed(() => {
+  // If page name = Home
+  if (router.currentRoute.value.name === 'home') {
+    return [
+      { name: 'Cakes',
+        to: '/categories/category/cakes'
+       },
+      { name: 'Cookies',
+        to: '/categories/category/cookies'
+       },
+      { name: 'Kedeishim',
+        to: '/categories/category/kedeishim'
+       }
+    ]
+  } else if (router.currentRoute.value.name === 'category') {
+    if (router.currentRoute.value.params.categoryName === 'cakes') {
+      return [
+        { name: 'Home',
+          to: '/'
+         },
+        { name: 'Cookies',
+          to: '/categories/category/cookies'
+         },
+        { name: 'Kedeishim',
+          to: '/categories/category/kedeishim'
+         }
+    ]
+    } else if (router.currentRoute.value.params.categoryName === 'cookies') {
+      return [
+        { name: 'Home',
+          to: '/'
+         },
+        { name: 'Cakes',
+          to: '/categories/category/cakes'
+         },
+        { name: 'Kedeishim',
+          to: '/categories/category/kedeishim'
+         }
+    ]
+    } else if (router.currentRoute.value.params.categoryName === 'kedeishim') {
+      return [
+        { name: 'Home',
+          to: '/'
+         },
+        { name: 'Cakes',
+          to: '/categories/category/cakes'
+         },
+        { name: 'Cookies',
+          to: '/categories/category/cookies'
+         }
+    ]
+    }
+  }
+})
 
 const currencies = ['₪', '$', '€', '£']
 

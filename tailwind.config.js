@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       screens: {
+        'vsm': '502px',
         'xs': '412px',
       },
       fontFamily: {
