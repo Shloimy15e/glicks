@@ -3,15 +3,20 @@
     <!-- Banner on top of nav that has location and contact info -->
     <div class="bg-gradient-to-r from-rose-400 to-rose-600 h-min">
       <div class=" flex items-center justify-between px-4 py-1 text-sm font-medium text-white">
-        <p class="group hidden sm:flex items-center justify-start">
-          <PhoneIcon class="fill-white stroke-gray-50 w-3 hidden md:block" />
-          <a v-for="phonenumber in phonenumbers" :href="phonenumber.href" class="text-white hover:text-amber-200 flex items-center">
+        <p class="group hidden lg:flex items-center justify-start">
+          <PhoneIcon class="fill-white stroke-gray-50 w-3" />
+          <a v-for="phonenumber in phonenumbers" :href="phonenumber.href"
+            class="text-white hover:text-amber-200 flex items-center">
              {{ phonenumber.name }}: {{ phonenumber.number }} 
           </a>
         </p>
+        <p class="hidden sm:flex lg:hidden items-center justify-start group hover:cursor-pointer">
+          <PhoneIcon class="fill-white stroke-inherit group-hover:fill-amber-200 w-3" /> 
+          <a class="text-white group-hover:text-amber-200" href="#contact-us">Contact us</a>
+        </p>
         <p>
           <span>
-            <span class="text-white flex items-center">
+            <span class="flex text-white items-center">
               <TruckIcon class="w-5 stroke-2" /><span class="text-white text-xs sm:text-sm">&nbsp; We
                 deliver to all areas in <span class=" text-amber-200">Yerushalayim.</span></span>
             </span>
@@ -41,7 +46,7 @@
         </RouterLink>
       </div>
       <!--Search bar-->
-      <Search class="hidden md:grid" />
+      <Search class="hidden md:grid" v-if="!noSearchBar" />
       <!--Currency selector -->
       <label for="currency-selector" class="sr-only">Currency</label>
       <div class="mr-8 flex-shrink-0">
@@ -125,15 +130,17 @@ function updateCurrency(event) {
   console.log(currencyState.selectedCurrency)
 }
 
+const props = defineProps({
+  noSearchBar: Boolean,
+})
+
 const router = useRouter()
 
-function handleHomePageReload(event) {
+function handleHomePageReload() {
   if (window.location.pathname === '/') {
     event.preventDefault();
-    // Navigate to a dummy route and then back to home
-    router.replace({ path: '/dummy' }).then(() => {
-      router.replace({ path: '/' });
-    });
+    // Refresh the page without reloading
+    router.go();
   }
 }
 
