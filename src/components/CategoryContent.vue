@@ -1,24 +1,27 @@
 <template>
-  <div class="relative w-full px-12 flex items-center justify-center"
+  <div class="relative w-full px-12 flex items-center justify-center" v-if="!noItems"
     :class="categoryImageSrc === '' ? 'bg-rose-200 h-40' : 'bg-yellow-950 py-12'">
-    <div class="relative z-10 text-center w-full"
-    :class="categoryImageSrc === '' ? 'my-0' :'my-20 md:my48'">
+    <div class="relative z-10 text-center w-full" :class="categoryImageSrc === '' ? 'my-0' : 'my-20 md:my48'">
       <h1 class="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold"
-        :class="categoryImageSrc === '' ? 'text-gray-700 bg-white py-2 px-3 rounded-lg' :'text-white'">
-        {{ categoryName  }}
+        :class="categoryImageSrc === '' ? 'text-gray-700 bg-white py-2 px-3 rounded-lg' : 'text-white'">
+        {{ categoryName }}
       </h1>
     </div>
-    <div v-if="categoryImageSrc !== ''" class="relative mx-auto max-w-4xl flex justify-between text-white font-heading tracking-widest text-sm">
+    <div v-if="categoryImageSrc !== ''"
+      class="relative mx-auto max-w-4xl flex justify-between text-white font-heading tracking-widest text-sm">
     </div>
     <img v-if="categoryImageSrc !== ''" :src="mainImage" class="w-full h-full absolute inset-0 object-cover opacity-70">
   </div>
+
+
   <div v-if="noItems" class="my-8 font-bold">
     <span class="text-gray-600 text-3xl">
       Sorry but we can't find anything for "{{ categoryName }}"
     </span>
   </div>
   <div v-else>
-    <div class="mx-auto max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl px-4 py-6 sm:px-6 sm:mt-12 lg:px-8 lg:mt-12 bg-inherit -pt-24">
+    <div
+      class="mx-auto max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl px-4 py-6 sm:px-6 sm:mt-12 lg:px-8 lg:mt-12 bg-inherit -pt-24">
       <div
         class="mt-6 opacity-9 grid grid-cols-1 gap-y-10 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:gap-x-0 justify-items-centerr">
         <ItemCards :items="categoryItems" :itemCurrency="itemCurrency" @openModal="openModal" />
@@ -29,7 +32,7 @@
 </template>
 
 <script setup>
-import { computed, inject, ref  } from 'vue';
+import { computed, inject, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import itemsData from '@/assets/data/items.json';
 import categoriesData from '@/assets/data/categories.json';
@@ -71,4 +74,5 @@ function openModal(item) {
   selectedItem.value = item
   open.value = true
 }
+
 </script>

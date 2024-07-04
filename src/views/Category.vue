@@ -1,5 +1,5 @@
 <template>
-    <Header />
+    <Header :noSearchBar="true" />
     <CategoryContent />
     <Footer />
 </template>
