@@ -40,11 +40,10 @@ const handleSearch = async () => {
 
   // Define the search options
   const options = {
-    keys: ['name'],
+    keys: ['name', 'description.tags'],
     threshold: 0.2,
     includeScore: true,
-  };
-
+};
   // Create a new Fuse instance
   const fuse = new Fuse(itemsData.value, options);
 

@@ -37,7 +37,7 @@
               </h2>
             </div>
             <div 
-              class="mt-6 opacity-9 grid grid-cols-1 gap-y-10 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:gap-x-0 justify-items-centerr">
+              class="mt-6 opacity-9 grid grid-cols-1 gap-y-10 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:gap-x-0 justify-items-center">
               <ItemCards :items="displayResults" :itemCurrency="itemCurrency" @openModal="openModal" />
             </div>
           </div>
