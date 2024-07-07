@@ -167,6 +167,18 @@ const navigation = computed(() => {
           to: '/categories/category/cookies'
          }
     ]
+    } else {
+      return [
+        { name: 'Cakes',
+          to: '/categories/category/cakes'
+         },
+        { name: 'Cookies',
+          to: '/categories/category/cookies'
+         },
+        { name: 'Kedeishim',
+          to: '/categories/category/kedeishim'
+         }
+        ]
     }
   }
 })

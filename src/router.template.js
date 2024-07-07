@@ -5,9 +5,9 @@ import NotFound from './views/NotFound.vue';
 import Category from './views/Category.vue';
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/categories/category/:categoryName', component: Category },
-  { path: '/:pathMatch(.*)*', component: NotFound },
+  { path: '/', component: Home, name: 'home' },
+  { path: '/categories/category/:categoryName', component: Category, name: 'category' },
+  { path: '/:pathMatch(.*)*', component: NotFound, name: 'not-found' },
   // @admin-route
 ];
 
