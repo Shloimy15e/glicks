@@ -126,11 +126,11 @@ const navigation = computed(() => {
       { name: 'Cookies',
         to: '/categories/category/cookies'
        },
-      { name: 'Kedeishim',
-        to: '/categories/category/kedeishim'
+      { name: 'Platters',
+        to: '/categories/category/platters'
        }
     ]
-  } else if (router.currentRoute.value.name === 'category') {
+  } else if (router.currentRoute.value.name === 'category-view') {
     if (router.currentRoute.value.params.categoryName === 'cakes') {
       return [
         { name: 'Home',
@@ -139,8 +139,8 @@ const navigation = computed(() => {
         { name: 'Cookies',
           to: '/categories/category/cookies'
          },
-        { name: 'Kedeishim',
-          to: '/categories/category/kedeishim'
+        { name: 'Platters',
+          to: '/categories/category/platters'
          }
     ]
     } else if (router.currentRoute.value.params.categoryName === 'cookies') {
@@ -151,11 +151,11 @@ const navigation = computed(() => {
         { name: 'Cakes',
           to: '/categories/category/cakes'
          },
-        { name: 'Kedeishim',
-          to: '/categories/category/kedeishim'
+        { name: 'Platters',
+          to: '/categories/category/platters'
          }
     ]
-    } else if (router.currentRoute.value.params.categoryName === 'kedeishim') {
+    } else if (router.currentRoute.value.params.categoryName === 'platters') {
       return [
         { name: 'Home',
           to: '/'
@@ -175,8 +175,8 @@ const navigation = computed(() => {
         { name: 'Cookies',
           to: '/categories/category/cookies'
          },
-        { name: 'Kedeishim',
-          to: '/categories/category/kedeishim'
+        { name: 'Platters',
+          to: '/categories/category/platters'
          }
         ]
     }
@@ -198,10 +198,10 @@ const props = defineProps({
 
 const router = useRouter()
 
-function handleHomePageReload() {
-  if (window.location.pathname === '/') {
-    event.preventDefault();
-    // Refresh the page without reloading
+function handleHomePageReload(e) {
+  if (router.currentRoute.value.name === 'home') {
+    e.preventDefault();
+    // Refresh the page
     router.go();
   }
 }
