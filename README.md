@@ -19,9 +19,13 @@ They will be partially displayed with the rest shown on a seperate page for each
 
 The items can be filtered by category and by Milk/Parve status.
 
+* [ ]  I will Iyh add an allergens filter and possibly a tags filter.
+
 ### Search
 
 users van search for items using the search bar, accuracy may vary.
+
+* [ ]  I will Iyh add tags to search if necessary
 
 ## How items and categories will be added:
 
@@ -32,7 +36,7 @@ In a local enviroment, there is an admin interface at /admin and netlify functio
 
 After pulling the repo a `.env.local` file has to be create with the following code:
 
-```
+```.env
 VITE_LOCAL_ENV=true
 ```
 

@@ -56,14 +56,23 @@
             "type": "string",
             "enum": [
               "Cakes",
-              "Chocolate",
+              "Cookies",
+              "Desserts",
+              "Muffins"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "enum": [
+              "Cake",
               "Cookies",
               "Cupcakes",
               "Desserts",
-              "test2",
-              "test3",
-              "test4",
-              "test5"
+              "Muffins",
+              "Pastries",
+              "Cheese",
+              "Healthy",
+              "Gluten free"
             ]
           }
         },

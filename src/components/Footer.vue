@@ -17,7 +17,8 @@
                 <h3 class="text-sm font-medium text-gray-900">Products</h3>
                 <ul role="list" class="mt-6 space-y-6">
                   <li v-for="item in footerNavigation.products" :key="item.name" class="text-base">
-                    <a :href="item.href" class="text-gray-500 hover:text-gray-600 text-sm">{{ item.name }}</a>
+                    <RouterLink :to="item.to" class="text-gray-500 hover:text-gray-600 text-sm">{{ item.name }}
+                    </RouterLink>
                   </li>
                 </ul>
               </div>
@@ -26,7 +27,9 @@
                 <h3 class="text-sm font-medium text-gray-900">Contact us from anywhere</h3>
                 <ul role="list" class="mt-6 space-y-6">
                   <li v-for="phonenumber in phonenumbers" :key="phonenumber.name" class="text-sm">
-                    <a :href="phonenumber.href" class="text-gray-500 hover:text-gray-600">{{ phonenumber.number }}</a>
+                    <a :href="phonenumber.href" class="text-gray-500 hover:text-amber-400">
+                        {{ phonenumber.name }}: {{ phonenumber.number }}
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -34,7 +37,7 @@
                 <h3 class="text-sm font-medium text-gray-900">Customer Service</h3>
                 <ul role="list" class="mt-6 space-y-6">
                   <li v-for="item in footerNavigation.customerService" :key="item.name" class="text-sm">
-                    <a :href="item.href" class="text-gray-500 hover:text-gray-600">{{ item.name }}</a>
+                    <RouterLink :to="item.to" class="text-gray-500 hover:text-gray-600">{{ item.name }}</RouterLink>
                   </li>
                 </ul>
               </div>
@@ -51,29 +54,24 @@
 </template>
 
 <script setup>
+import phonenumbers from '@/assets/data/phonenumbers.json'
+
 const footerNavigation = {
   products: [
-    { name: 'Cakes', href: '#Cakes' },
-    { name: 'Cookies', href: '#Cookies' },
-    { name: 'Kedeishim', href: '#' },
-    { name: 'Shabbos platters', href: '#' },
+    { name: 'Cakes', to: '/categories/category/cakes' },
+    { name: 'Cookies', to: '/categories/category/cookies' },
+    { name: 'Kedeishim platters', to: '/categories/category/kedeishim' },
+    { name: 'Shabbos platters', to: '/categories/category/shabbos' },
   ],
   company: [
-    { name: 'Who we are', href: '#' },
-    { name: 'Help wanted', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy', href: '#' },
+    { name: 'Who we are', to: '/' },
+    { name: 'Help wanted', to: '/' },
   ],
   customerService: [
-    { name: 'Contact', href: '#' },
-    { name: 'Shipping', href: '#' },
-    { name: 'Secure Payments', href: '#' },
-    { name: 'FAQ', href: '#' },
+    { name: 'Contact', to: '#' },
+    { name: 'Shipping', to: '#' },
+    { name: 'Secure Payments', to: '#' },
+    { name: 'FAQ', to: '#' },
   ],
 }
-const phonenumbers = [
-  { name: 'il', number: '+025 373737', href: 'tel:+025 373737' },
-  { name: 'us', number: '+1 555 555 5555', href: 'tel:+1 555 555 5555' },
-  { name: 'uk', number: '+44 555 555 5555', href: 'tel:+44 555 555 5555' },
-]
 </script>

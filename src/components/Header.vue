@@ -2,32 +2,34 @@
   <header class="bg-white">
     <!-- Banner on top of nav that has location and contact info -->
     <div class="bg-gradient-to-r from-rose-400 to-rose-600 h-min">
-      <span class=" flex md:flex items-center justify-between px-4 py-1 text-sm font-medium text-white">
-        <p class="hidden sm:flex items-center justify-start">
-          <a href="tel:+025373737" class="text-white hover:fill-white flex items-center">
-            <PhoneIcon class="fill-white stroke-gray-50 w-3 hidden md:block" /><span class="text-white">&nbsp; IL:
-              025-373737 &nbsp;</span>
+      <div class=" flex items-center justify-between px-4 py-1 text-sm font-medium text-white">
+        <p class="group hidden sm:flex items-center justify-start">
+          <PhoneIcon class="fill-white stroke-gray-50 w-3" />
+          <a v-for="(phonenumber, index) in phonenumbers" :href="phonenumber.href"
+            class="text-white hover:text-amber-200 flex items-center"
+            :class="index === 2 ? 'hidden lg:flex' : 'flex', index === 1 ? 'hidden md:flex' : 'flex'">
+             {{ phonenumber.name }}: {{ phonenumber.number }} 
           </a>
-          <a href="tel:+44 20 7123 4567" class="hidden md:block text-white"><span class="text-white">&nbsp; UK: +44 20
-              7123 4567 &nbsp;</span></a>
-          <a href="tel:(555) 555-1234" class="text-white hidden lg:block"><span class="text-white">&nbsp; US: (555)
-              555-1234</span></a>
+        </p>
+        <p class="hidden vsm:flex sm:hidden items-center justify-start group hover:cursor-pointer">
+          <PhoneIcon class="fill-white stroke-inherit group-hover:fill-amber-200 w-3" /> 
+          <a class="text-white group-hover:text-amber-200" href="#contact-us">Contact us</a>
         </p>
         <p>
           <span>
-            <span class="text-white flex items-center">
+            <span class="flex text-white items-center">
               <TruckIcon class="w-5 stroke-2" /><span class="text-white text-xs sm:text-sm">&nbsp; We
                 deliver to all areas in <span class=" text-amber-200">Yerushalayim.</span></span>
             </span>
           </span>
         </p>
-      </span>
+      </div>
     </div>
 
     <nav class="flex items-center md:gap-10 justify-between py-2 lg:py-3 pl-1 lg:pl-2 pr-4 lg:pr-6"
       aria-label="Main navigation">
       <Logo class="min-w-min flex p-2 lg:p-2 xl:p-4">
-        <RouterLink to="/" class="h-min flex items-center">
+        <RouterLink to="/" class="h-min flex items-center" @click.native="handleHomePageReload">
           <span class="sr-only">Glicks Bakery</span>
           <img
             class="h-20 md:h-26 lg:h-28 w-auto min-w-fit rounded-md lg:rounded-full p-0.5 border-solid border-2 border-rose-300"
@@ -38,14 +40,14 @@
         </RouterLink>
       </Logo>
       <!--Top nav items-->
-      <div class="hidden lg:flex gap-x-0 xl:gap-x-12 justify-between ml-16">
-        <RouterLink :to="`/categories/category/${item.name.toLowerCase()}`" v-for="item in navigation" :key="item.name"
+      <div class="hidden lg:flex gap-0 lg:gap-24 xl:gap-14 justify-between">
+        <RouterLink :to="item.to" v-for="item in navigation" :key="item.name"
           class="text-xl lg:text-2xl font-extrabold font-cherrySwashScript leading-6 h-min rounded-md py-3 px-2 lg:px-3 text-gray-900 hover:bg-amber-100 hover:text-black flex-shrink-0">
           {{ item.name }}
         </RouterLink>
       </div>
       <!--Search bar-->
-      <Search class="hidden md:grid" />
+      <Search class="hidden md:grid" v-if="!noSearchBar" />
       <!--Currency selector -->
       <label for="currency-selector" class="sr-only">Currency</label>
       <div class="mr-8 flex-shrink-0">
@@ -54,9 +56,6 @@
           <option class="bg-gray-100 font-sans" v-for="currency in currencies" :key="currency">{{ currency }}
           </option>
         </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center">
-          <ChevronDownIcon class="h-5 w-5 text-gray-500" aria-hidden="true" />
-        </div>
       </div>
       <!--Mobile menu button-->
       <div class="flex">
@@ -74,10 +73,10 @@
       <DialogPanel
         class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div class="flex items-center justify-between">
-          <a href="#" class="-m-1.5 p-1.5">
+          <RouterLink to="/" class="-m-1.5 p-1.5">
             <span class="sr-only">Glicks Bakery</span>
             <img class="h-14 w-auto rounded-full" src="/favicon/favicon-glicks.png" alt="" />
-          </a>
+          </RouterLink>
           <button type="button"
             class="-m-2.5 rounded-md p-2.5 text-gray-800 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 active:border-none"
             @click="mobileMenuOpen = false">
@@ -88,7 +87,7 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-              <RouterLink :to="`/categories/category/${item.name.toLowerCase()}`" v-for="item in navigation"
+              <RouterLink :to="item.to" v-for="item in navigation"
                 :key="item.name" @click="mobileMenuOpen = false"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 bg-none hover:bg-amber-100 hover:text-black">
                 {{ item.name }}
@@ -108,17 +107,69 @@
 </template>
 
 <script setup>
-import { inject, ref, watch } from 'vue';
+import { inject, ref, computed } from 'vue';
+import { RouterLink, useRouter } from 'vue-router';
+import phonenumbers from '@/assets/data/phonenumbers.json';
 import Logo from './Logo.vue';
 import Search from './Search.vue';
 import { Dialog, DialogPanel } from '@headlessui/vue';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
+import { Bars3Icon, XMarkIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
 
-const navigation = [
-  { name: 'Cakes' },
-  { name: 'Cookies' },
-  { name: 'Kedeishim' }
-]
+
+const navigation = computed(() => {
+  // If page name = Home
+  if (router.currentRoute.value.name === 'home') {
+    return [
+      { name: 'Cakes',
+        to: '/categories/category/cakes'
+       },
+      { name: 'Cookies',
+        to: '/categories/category/cookies'
+       },
+      { name: 'Kedeishim',
+        to: '/categories/category/kedeishim'
+       }
+    ]
+  } else if (router.currentRoute.value.name === 'category') {
+    if (router.currentRoute.value.params.categoryName === 'cakes') {
+      return [
+        { name: 'Home',
+          to: '/'
+         },
+        { name: 'Cookies',
+          to: '/categories/category/cookies'
+         },
+        { name: 'Kedeishim',
+          to: '/categories/category/kedeishim'
+         }
+    ]
+    } else if (router.currentRoute.value.params.categoryName === 'cookies') {
+      return [
+        { name: 'Home',
+          to: '/'
+         },
+        { name: 'Cakes',
+          to: '/categories/category/cakes'
+         },
+        { name: 'Kedeishim',
+          to: '/categories/category/kedeishim'
+         }
+    ]
+    } else if (router.currentRoute.value.params.categoryName === 'kedeishim') {
+      return [
+        { name: 'Home',
+          to: '/'
+         },
+        { name: 'Cakes',
+          to: '/categories/category/cakes'
+         },
+        { name: 'Cookies',
+          to: '/categories/category/cookies'
+         }
+    ]
+    }
+  }
+})
 
 const currencies = ['₪', '$', '€', '£']
 
@@ -127,6 +178,20 @@ const currencyState = inject('currencyState')
 function updateCurrency(event) {
   currencyState.selectedCurrency = event.target.value;
   console.log(currencyState.selectedCurrency)
+}
+
+const props = defineProps({
+  noSearchBar: Boolean,
+})
+
+const router = useRouter()
+
+function handleHomePageReload() {
+  if (window.location.pathname === '/') {
+    event.preventDefault();
+    // Refresh the page without reloading
+    router.go();
+  }
 }
 
 const mobileMenuOpen = ref(false)
