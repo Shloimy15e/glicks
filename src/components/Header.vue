@@ -25,7 +25,7 @@
         </p>
       </div>
     </div>
-
+    <!-- Header -->
     <nav class="flex items-center md:gap-10 justify-between py-2 lg:py-3 pl-1 lg:pl-2 pr-4 lg:pr-6"
       aria-label="Main navigation">
       <Logo class="min-w-min flex p-2 lg:p-2 xl:p-4">
@@ -68,41 +68,50 @@
       </div>
     </nav>
     <!-- Mobile menu -->
-    <Dialog @close="mobileMenuOpen = false" :open="mobileMenuOpen">
-      <div class="fixed inset-0 z-10" />
-      <DialogPanel
-        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-        <div class="flex items-center justify-between">
-          <RouterLink to="/" class="-m-1.5 p-1.5">
-            <span class="sr-only">Glicks Bakery</span>
-            <img class="h-14 w-auto rounded-full" src="/favicon/favicon-glicks.png" alt="" />
-          </RouterLink>
-          <button type="button"
-            class="-m-2.5 rounded-md p-2.5 text-gray-800 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 active:border-none"
-            @click="mobileMenuOpen = false">
-            <span class="sr-only">Close menu</span>
-            <XMarkIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
-            <div class="space-y-2 py-6">
-              <RouterLink :to="item.to" v-for="item in navigation"
-                :key="item.name" @click="mobileMenuOpen = false"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 bg-none hover:bg-amber-100 hover:text-black">
-                {{ item.name }}
+    <TransitionRoot as="template" :show="mobileMenuOpen">
+      <Dialog @close="mobileMenuOpen = false">
+        <TransitionChild as="template" enter="duration-500 ease-linear" enter-from="opacity-0" enter-to="opacity-100"
+          leave="duration-500 ease-in" leave-from="opacity-100" leave-to="opacity-0">
+          <div class="fixed inset-0 z-10 bg-amber-950 bg-opacity-35" />
+        </TransitionChild>
+        <TransitionChild as="template" enter="transition ease-in-out duration-300 transform"
+          enter-from="translate-x-full" enter-to="translate-x-0" leave="transition ease-in-out duration-300 transform"
+          leave-from="translate-x-0" leave-to="translate-x-full">
+          <DialogPanel
+            class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 max-w-xs sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <div class="flex items-center justify-between">
+              <RouterLink to="/" class="-m-1.5 p-1.5">
+                <span class="sr-only">Glicks Bakery</span>
+                <img class="h-14 w-auto rounded-full" src="/favicon/favicon-glicks.png" alt="" />
               </RouterLink>
+              <button type="button"
+                class="-m-2.5 rounded-md p-2.5 text-gray-800 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 active:border-none"
+                @click="mobileMenuOpen = false">
+                <span class="sr-only">Close menu</span>
+                <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+              </button>
             </div>
-            <div class="space-y-2 py-6">
-              <a href="#contact-us" @click="mobileMenuOpen = false"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-green-200 hover:text-black">
-                Contact Us
-              </a>
+            <div class="mt-6 flow-root">
+              <div class="-my-6 divide-y divide-gray-500/10">
+                <div class="space-y-2 py-6">
+                  <RouterLink :to="item.to" v-for="item in navigation" :key="item.name" @click="mobileMenuOpen = false"
+                    class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 bg-none hover:bg-amber-100 hover:text-black">
+                    <component :is="item.icon" :size="22" :stroke-width="1.5"  /> <span> {{ item.name }} </span>
+                  </RouterLink>
+                </div>
+                <div class= "py-6">
+                  <a href="#contact-us" @click="mobileMenuOpen = false"
+                    class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-green-200 hover:text-black">
+                    <PhoneIcon class="stroke-gray-900 group-hover:fill-amber-200 w-5" />
+                    Contact Us
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </DialogPanel>
-    </Dialog>
+          </DialogPanel>
+        </TransitionChild>
+      </Dialog>
+    </TransitionRoot>
   </header>
 </template>
 
@@ -112,73 +121,72 @@ import { RouterLink, useRouter } from 'vue-router';
 import phonenumbers from '@/assets/data/phonenumbers.json';
 import Logo from './Logo.vue';
 import Search from './Search.vue';
-import { Dialog, DialogPanel } from '@headlessui/vue';
+import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
+import { CakeSlice, Cookie, HouseIcon, HandPlatter } from 'lucide-vue-next';
 
+const navigationData = {
+    cakes: {
+        name: "Cakes",
+        to: "/categories/category/cakes",
+        icon: CakeSlice
+    },
+    cookies:{
+        name: "Cookies",
+        to: "/categories/category/cookies",
+        icon: Cookie 
+    },
+    platters:{
+        name: "Platters",
+        to: "/categories/category/platters",
+        icon: HandPlatter
+    },
+    home:{
+        name: "Home - all items",
+        to: "/",
+        icon: HouseIcon
+      }
+}
 
+const cakesNav = navigationData.cakes;
+const cookiesNav = navigationData.cookies;
+const plattersNav = navigationData.platters;
+const homeNav = navigationData.home;
+
+console.log(plattersNav);
 const navigation = computed(() => {
   // If page name = Home
   if (router.currentRoute.value.name === 'home') {
     return [
-      { name: 'Cakes',
-        to: '/categories/category/cakes'
-       },
-      { name: 'Cookies',
-        to: '/categories/category/cookies'
-       },
-      { name: 'Platters',
-        to: '/categories/category/platters'
-       }
+      cakesNav,
+      cookiesNav,
+      plattersNav
     ]
   } else if (router.currentRoute.value.name === 'category-view') {
     if (router.currentRoute.value.params.categoryName === 'cakes') {
       return [
-        { name: 'Home',
-          to: '/'
-         },
-        { name: 'Cookies',
-          to: '/categories/category/cookies'
-         },
-        { name: 'Platters',
-          to: '/categories/category/platters'
-         }
-    ]
+        homeNav,
+        cookiesNav,
+        plattersNav
+      ]
     } else if (router.currentRoute.value.params.categoryName === 'cookies') {
       return [
-        { name: 'Home',
-          to: '/'
-         },
-        { name: 'Cakes',
-          to: '/categories/category/cakes'
-         },
-        { name: 'Platters',
-          to: '/categories/category/platters'
-         }
-    ]
+        homeNav,
+        cakesNav,
+        plattersNav
+      ]
     } else if (router.currentRoute.value.params.categoryName === 'platters') {
       return [
-        { name: 'Home',
-          to: '/'
-         },
-        { name: 'Cakes',
-          to: '/categories/category/cakes'
-         },
-        { name: 'Cookies',
-          to: '/categories/category/cookies'
-         }
-    ]
+        homeNav,
+        cakesNav,
+        cookiesNav
+      ]
     } else {
       return [
-        { name: 'Cakes',
-          to: '/categories/category/cakes'
-         },
-        { name: 'Cookies',
-          to: '/categories/category/cookies'
-         },
-        { name: 'Platters',
-          to: '/categories/category/platters'
-         }
-        ]
+        cakesNav,
+        cookiesNav,
+        plattersNav
+      ]
     }
   }
 })
