@@ -95,7 +95,7 @@
                       </div>
                     </DisclosureButton>
                   </h3>
-                  <DisclosurePanel class="pt-6">
+                  <DisclosurePanel class="pt-6 transition-all duration-300">
                     <div class="space-y-6">
                       <div class="flex items-center">
                         <input :id="`${milkOptions[0].id}`" :name="`${milkOptions[0].name}`" type="checkbox"
@@ -119,9 +119,9 @@
               </form>
               <!-- Active filters mobile -->
               <div
-                class="mx-auto w-11/12 bg-gray-50 grid grid-cols-1 gap-y-3 items-center justify-between px-2 py-1 rounded-2xl"
+                class="mx-auto w-11/12 bg-gray-50 grid grid-cols-1 gap-y-3 items-center justify-between px-2 py-1 rounded-2xl transition-all duration-300"
                 :class="amountCheckedFilters ? 'p-2' : 'p-1'">
-                <div class="flex items-center"
+                <div class="flex items-center transition-all duration-300"
                   :class="amountCheckedFilters ? 'justify-center border-b pb-2' : 'justify-start'">
                   <h3
                     class="text-sm font-medium text-gray-500 border-r border-gray-300 pr-3 flex items-center justify-center"
@@ -155,7 +155,7 @@
                 </div>
                 <div v-if="amountCheckedFilters" class="flex justify-center items-center">
                   <button @click="removeFilter('clearAll')" v-if="amountCheckedFilters"
-                    class="bg-amber-50 w-full rounded-xl hover:bg-amber-100 active:bg-amber-200">
+                    class="bg-amber-200 w-full rounded-xl active:bg-amber-300">
                     Clear all
                   </button>
                 </div>
@@ -168,13 +168,13 @@
 
     <!-- Filters for lg screens -->
     <!-- Toggle Button for filters for lg screens -->
-    <button @click="toggleFilters" :class="['hidden sm:flex items-center justify-between w-full h-min leading-none bg-gray-100 hover:bg-amber-100 active:bg-amber-200',
+    <button @click="toggleFilters" :class="['hidden sm:flex items-center justify-between w-full h-min leading-none transition-all duration-300 bg-gray-100 hover:bg-amber-100 active:bg-amber-200',
       filtersVisible ? 'p-1' : 'p-2.5 xl:p-3']" v-if="!searching">
       <div class="flex items-center">
         <span v-if="filtersVisible" class="text-xs">Hide Filters</span>
         <span v-else>Filters</span>
         <ChevronDownIcon :class="{ 'transform rotate-180': filtersVisible }"
-          class="h-5 w-5 text-gray-500 transition-transform mr-auto" aria-hidden="true" />
+          class="h-5 w-5 text-gray-500 transition-all duration-200 mr-auto" aria-hidden="true" />
       </div>
       <span v-if="amountCheckedFilters && !filtersVisible"
         class="flex items-center pl-2 border-l border-l-gray-400 h-full">
@@ -182,7 +182,7 @@
         <span v-if="amountCheckedFilters > 1">s</span>
       </span>
     </button>
-    <section v-if="filtersVisible && !searching" aria-labelledby="filter-heading" class="hidden sm:block">
+    <section v-if="filtersVisible && !searching" aria-labelledby="filter-heading" class="hidden sm:block transition-all duration-300">
       <h2 id="filter-heading" class="sr-only">Filters</h2>
       <div class="border-b border-gray-200 bg-white p-3">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -268,7 +268,7 @@
       </div>
       <!-- Active filters -->
       <div>
-        <div class="mx-auto max-w-7xl px-4 flex items-center justify-between sm:px-6 lg:px-8"
+        <div class="mx-auto max-w-7xl px-4 flex items-center justify-between sm:px-6 lg:px-8 transition-all duration-200"
           :class="amountCheckedFilters ? 'p-2' : 'p-1'">
           <div class="flex justify-start items-center">
             <h3 class="text-sm font-medium text-gray-500 border-r border-r-gray-300 pr-3">
