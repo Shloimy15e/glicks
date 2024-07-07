@@ -47,9 +47,9 @@
                   <p class="text-sm font-semibold text-gray-50 w-min h-min px-1 py-0.5 m-2 rounded-md flex items-center"
                     :class="item.milk ? 'bg-blue-500' : 'bg-green-500'">
                     {{ item.milk ? 'Milk' : 'Pareve' }} 
-                  </p>
+                </p>
                   <p v-for="tag in item.description.tags" 
-                    class="text-sm font-semibold text-gray-700 bg-gray-100 border border-gray-200 w-min h-min px-1 py-0.5 m-2 rounded-md flex items-center">
+                    class="text-sm font-semibold text-gray-700 bg-gray-200 w-min h-min px-1 py-0.5 m-2 rounded-md flex items-center">
                     {{ tag }}
                   </p>
                 </div>
