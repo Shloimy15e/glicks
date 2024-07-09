@@ -7,26 +7,31 @@
   src: url('/fonts/LuxuriousScript-Regular.ttf') format('truetype');
   font-weight: normal;
 }
+
 @font-face {
   font-family: 'PetitFormalScript';
   src: url('/fonts/PetitFormalScript-Regular.ttf') format('truetype');
   font-weight: normal;
 }
+
 @font-face {
   font-family: 'CherrySwash';
   src: url('/fonts/CherrySwash-Regular.ttf');
   font-weight: normal;
 }
+
 @font-face {
   font-family: 'CherrySwash';
   src: url('/fonts/CherrySwash-Bold.ttf');
   font-weight: bold;
 }
+
 @font-face {
   font-family: 'ChopinScript';
   src: url('/public/fonts/ChopinScript.ttf');
   font-weight: normal;
 }
+
 @font-face {
   font-family: 'SeptemberScript';
   src: url('/public/fonts/SeptemberScript-Regular.ttf');
@@ -45,6 +50,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 ::-webkit-scrollbar {
   width: 14px;
   color: #6B7280;
@@ -53,16 +59,13 @@
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius: 100vh;
-  background: #E5E7EB
-  ;
+  background: #E5E7EB;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #F3F4F6;
   border-radius: 100vh;
-  border: 3px solid #FDE68A
-
-  ;
+  border: 3px solid #FDE68A;
 }
 
 /* Handle on hover */
@@ -70,16 +73,19 @@
   background: #FDE68A;
   border-color: #ffffff;
 }
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: inherit;
   text-decoration: inherit;
 }
+
 a:hover {
-  color: #535bf2;
+  color: #FBBF24;
 }
 
-body, #app {
+body,
+#app {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -91,11 +97,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color:#f0e68c;  
+  background-color: #f0e68c;
   color: #242424;
 }
 
 #app {
   text-align: center;
 }
-
