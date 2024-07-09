@@ -22,7 +22,9 @@
       <!-- Items listed by category or filter -->
       <div v-if="noItems" class="my-8 text-gray-600 text-3xl font-bold  leading-relaxed">
         <span>
-          We apologize, but no results matched your search for "{{ searchQuery }}". <br/> Please try again with different keywords.        </span>
+          <p>
+            We apologize, but no results matched your search for "{{ searchQuery }}". <br/> Please try again with different keywords.
+          </p>
       </div>
       <div v-else-if="searching">
         <section aria-labelledby="items-listed">
