@@ -63,12 +63,7 @@ const footerNavigation = {
     { name: 'Kedeishim platters', to: '/categories/category/kedeishim' },
     { name: 'Shabbos platters', to: '/categories/category/shabbos' },
   ],
-  company: [
-    { name: 'Who we are', to: '/' },
-    { name: 'Help wanted', to: '/' },
-  ],
   customerService: [
-    { name: 'Contact', to: '#' },
     { name: 'Shipping', to: '#' },
     { name: 'Secure Payments', to: '#' },
     { name: 'FAQ', to: '#' },

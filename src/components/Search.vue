@@ -1,15 +1,15 @@
 <template>
   <div class="grid-cols-1 grid-flow-row transition-all">
-    <div class="items-center w-full mx-auto rounded-full sm:rounded-lg bg-gray-200 text-gray-500 flex">
-      <input type="search" class="w-full h-10 sm:h-12 px-4 bg-inherit text-gray-800 rounded-full focus:outline-none"
+    <div class="items-center w-full mx-auto rounded-full sm:rounded-full bg-gray-50 border-[1px] has-[:focus]:border-2 md:border-2 border-gray-300 md:border-gray-200 flex has-[:focus]:ring-1 has-[:focus]:ring-amber-200 has-[:focus]:border-white has-[:focus]:shadow-md hover:shadow-md duration-200">
+      <input type="search" class="w-full h-10 sm:h-12 px-4 bg-inherit text-gray-800 rounded-full focus:outline-none "
         placeholder="search" v-model="search"
         :title="(search.length > 0) ? 'Search all items' : 'Type something to enable search button'"
         @keyup.enter="search.length > 0 ? handleSearch() : null"  />
       <div class="h-full">
         <button type="submit" @click="handleSearch"
-          class="flex items-center justify-center w-12 h-full  text-gray-500 rounded-r-full sm:rounded-r-lg rounded-l-none disabled:bg-gray-500 transition-all"
-          :class="(search.length > 0) ? 'bg-amber-200 hover:bg-amber-300 active:bg-amber-200' : 'bg-amber-100 hover:bg-amber-100 text-gray-300'"
-          :title="(search.length > 0) ? 'Search' : 'Type something to enable the search button'">
+          class="flex items-center justify-center w-12 h-full text-gray-500 rounded-r-full rounded-l-none bg-amber-200 hover:bg-amber-300 active:bg-amber-200 disabled:bg-amber-200 disabled:text-gray-350 transition-all"
+          :title="(search.length > 0) ? 'Search' : 'Type something to enable the search button'"
+          :disabled="search.length === 0">
           <div class=" w-36">
             <MagnifyingGlassIcon class="h-4 w-auto stroke-2" aria-hidden="true" />
           </div>
@@ -33,11 +33,7 @@ const search = ref('')
 const searchResults = inject('searchResults')
 
 const handleSearch = async () => {
-  if (search.value.length === 0) {
-    return;
-  }
   const searchTerm = search.value.toLowerCase();
-
   // Define the search options
   const options = {
     keys: ['name', 'description.tags'],
