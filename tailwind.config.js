@@ -20,6 +20,9 @@ export default {
       },
       padding: {
         '0.5': '0.125rem',
+      },
+      colors: {
+        'gray-350': '#a3abb5',
       }
     },
   },

@@ -24,20 +24,19 @@
 <script setup>
 const perks = ([
   {
-    name: 'We deliver to YOUR family',
+    name: 'Schedule an order',
     imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-calendar-light.svg',
     description:
-      'We offer delivery to anywhere in Yerushalayim and you can call us from anywhere in the world.',
+      'Call us up to a month in advance.',
   },
   {
     name: 'Gift your loved ones',
     imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-gift-card-light.svg',
-    description: 'You may be far from them geographically but you are so close in heart.',
+    description: 'Gift your loved ones with the gift of love.',
   },
   {
     name: 'Call us now from around the world',
     imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-planet-light.svg',
-    description: 'We have special for our customers abroad american and British phone numbers.',
-  },
+    description: 'You may be far from them geographically, but you are so close in heart.',  },
 ])
 </script>
