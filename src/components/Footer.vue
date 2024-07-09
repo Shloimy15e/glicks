@@ -76,7 +76,7 @@ const footerNavigation = {
   customerService: [
     { name: 'Delivery', to: '#' },
     { name: 'Secure Payment Options', to: '#' },
-    { name: 'FAQ', to: '#' },
+    { name: 'FAQ', to: '/faq' },
   ],
 }
 </script>
