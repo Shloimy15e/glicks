@@ -298,7 +298,7 @@
           </div>
           <!-- Active filters -->
           <div>
-            <div class="mx-auto max-w-7xl px-4 flex items-center justify-between sm:px-6 lg:px-8 duration-200 bg-gray-200"
+            <div class="mx-auto max-w-7xl px-4 flex items-center justify-between sm:px-6 lg:px-8 duration-200 bg-gray-100"
               :class="amountCheckedFilters ? 'p-2' : 'p-1'">
               <div class="flex justify-start items-center">
                 <h3 class="text-sm font-medium text-gray-500 border-r border-r-gray-300 pr-3">
