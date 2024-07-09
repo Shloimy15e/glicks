@@ -49,8 +49,8 @@
       <!--Search bar-->
       <Search class="hidden md:grid" v-if="!noSearchBar" />
       <!--Currency selector -->
-      <label for="currency-selector" class="sr-only">Currency</label>
-      <div class="mr-8 flex-shrink-0">
+      <label v-if="!noCurrencySelector" for="currency-selector" class="sr-only">Currency</label>
+      <div v-if="!noCurrencySelector" class="mr-8 flex-shrink-0">
         <select id="currency-selector" name="currency-selector" @change="updateCurrency"
           class="text-2xl h-min w-auto aspect-1 rounded-full pb-1 px-1 text-gray-900 disabled:text-gray-500 hover:text-black bg-gray-200 hover:bg-amber-100 active:bg-amber-200 disabled:hover:bg-gray-200 flex-shrink-0 border-none focus-visible:outline-none">
           <option class="bg-gray-100 font-sans" v-for="currency in currencies" :key="currency">{{ currency }}
@@ -96,10 +96,10 @@
                 <div class="space-y-2 py-6">
                   <RouterLink :to="item.to" v-for="item in navigation" :key="item.name" @click="mobileMenuOpen = false"
                     class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 bg-none hover:bg-amber-100 hover:text-black">
-                    <component :is="item.icon" :size="22" :stroke-width="1.5"  /> <span> {{ item.name }} </span>
+                    <component :is="item.icon" :size="22" :stroke-width="1.5" /> <span> {{ item.name }} </span>
                   </RouterLink>
                 </div>
-                <div class= "py-6">
+                <div class="py-6">
                   <a href="#contact-us" @click="mobileMenuOpen = false"
                     class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-green-200 hover:text-black">
                     <PhoneIcon class="stroke-gray-900 group-hover:fill-amber-200 w-5" />
@@ -126,26 +126,26 @@ import { Bars3Icon, XMarkIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/ou
 import { CakeSlice, Cookie, HouseIcon, HandPlatter } from 'lucide-vue-next';
 
 const navigationData = {
-    cakes: {
-        name: "Cakes",
-        to: "/categories/category/cakes",
-        icon: CakeSlice
-    },
-    cookies:{
-        name: "Cookies",
-        to: "/categories/category/cookies",
-        icon: Cookie 
-    },
-    platters:{
-        name: "Platters",
-        to: "/categories/category/platters",
-        icon: HandPlatter
-    },
-    home:{
-        name: "Home - all items",
-        to: "/",
-        icon: HouseIcon
-      }
+  cakes: {
+    name: "Cakes",
+    to: "/categories/category/cakes",
+    icon: CakeSlice
+  },
+  cookies: {
+    name: "Cookies",
+    to: "/categories/category/cookies",
+    icon: Cookie
+  },
+  platters: {
+    name: "Platters",
+    to: "/categories/category/platters",
+    icon: HandPlatter
+  },
+  home: {
+    name: "Home - all items",
+    to: "/",
+    icon: HouseIcon
+  }
 }
 
 const cakesNav = navigationData.cakes;
@@ -188,6 +188,13 @@ const navigation = computed(() => {
         plattersNav
       ]
     }
+  } else {
+    return [
+      homeNav,
+      cakesNav,
+      cookiesNav,
+      plattersNav
+    ]
   }
 })
 
@@ -202,6 +209,7 @@ function updateCurrency(event) {
 
 const props = defineProps({
   noSearchBar: Boolean,
+  noCurrencySelector: Boolean
 })
 
 const router = useRouter()
