@@ -6,37 +6,45 @@
         <div class="border-t border-gray-200 py-20">
           <!-- Image section -->
           <div class="col-span-1 md:col-span-2 lg:col-start-1 lg:row-start-1">
-            <img src="/favicon/favicon-glicks.png" alt="" class="h-12 w-auto rounded-full" />
+            <img src="/public/favicon/favicon-glicks.png" alt="Secondary logo" class="h-12 w-auto rounded-full" />
           </div>
 
           <!-- Sitemap sections -->
           <div
-            class="col-span-6 mt-10 grid gap-8 md:col-span-8 md:col-start-3 md:row-start-1 md:mt-0 lg:col-span-6 lg:col-start-2">
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-y-12 sm:col-span-2 sm:grid-cols-2 sm:gap-x-8">
+            class="mt-10 ">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-y-12 sm:col-span-2 sm:grid-cols-2 sm:gap-x-8">
+
+              <!-- Contact us for -->
+              <div id="contact-us">
+                <h3 class="text-lg font-medium text-gray-900">Contact us from anywhere</h3>
+                <ul role="list" class="mt-6 space-y-6 flex flex-col items-center justify-center">
+                  <li v-for="phonenumber in phonenumbers" :key="phonenumber.name" class="text-md">
+                    <a :href="phonenumber.href"
+                      class="text-gray-500 hover:text-amber-400 flex gap-2 justify-between w-48">
+                      <span>{{ phonenumber.name }}:</span>
+                      <span>{{ phonenumber.number }} </span>
+                    </a>
+                  </li>
+                  <li class="w-52">
+                    <p class="text-md text-gray-500 font-bold">
+                      Please be advised that we accept phone orders only
+                    </p>
+                  </li>
+                </ul>
+              </div>
               <div>
-                <h3 class="text-sm font-medium text-gray-900">Products</h3>
+                <h3 class="text-lg font-medium text-gray-900">Products</h3>
                 <ul role="list" class="mt-6 space-y-6">
                   <li v-for="item in footerNavigation.products" :key="item.name" class="text-base">
-                    <RouterLink :to="item.to" class="text-gray-500 hover:text-gray-600 text-sm">{{ item.name }}
+                    <RouterLink :to="item.to" class="text-gray-500 hover:text-gray-600 text-md">{{ item.name }}
                     </RouterLink>
                   </li>
                 </ul>
               </div>
-              <!-- Contact us for -->
-              <div id="contact-us">
-                <h3 class="text-sm font-medium text-gray-900">Contact us from anywhere</h3>
-                <ul role="list" class="mt-6 space-y-6">
-                  <li v-for="phonenumber in phonenumbers" :key="phonenumber.name" class="text-sm">
-                    <a :href="phonenumber.href" class="text-gray-500 hover:text-amber-400">
-                        {{ phonenumber.name }}: {{ phonenumber.number }}
-                    </a>
-                  </li>
-                </ul>
-              </div>
               <div>
-                <h3 class="text-sm font-medium text-gray-900">Customer Service</h3>
+                <h3 class="text-lg font-medium text-gray-900">Helpful Links</h3>
                 <ul role="list" class="mt-6 space-y-6">
-                  <li v-for="item in footerNavigation.customerService" :key="item.name" class="text-sm">
+                  <li v-for="item in footerNavigation.customerService" :key="item.name" class="text-md">
                     <RouterLink :to="item.to" class="text-gray-500 hover:text-gray-600">{{ item.name }}</RouterLink>
                   </li>
                 </ul>
@@ -48,6 +56,8 @@
 
       <div class="border-t border-gray-100 py-10 text-center">
         <p class="text-sm text-gray-500">&copy; 2024 Glicks Bakery, Inc. All rights reserved.</p>
+        <br />
+        <p class="text-sm text-gray-400">Built and designed by Shloimy Elbaum.</p>
       </div>
     </footer>
   </div>
@@ -64,8 +74,8 @@ const footerNavigation = {
     { name: 'Shabbos platters', to: '/categories/category/shabbos' },
   ],
   customerService: [
-    { name: 'Shipping', to: '#' },
-    { name: 'Secure Payments', to: '#' },
+    { name: 'Delivery', to: '#' },
+    { name: 'Secure Payment Options', to: '#' },
     { name: 'FAQ', to: '#' },
   ],
 }
