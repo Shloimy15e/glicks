@@ -16,8 +16,7 @@
 
   <div v-if="noItems" class="my-8 font-bold">
     <span class="text-gray-600 text-3xl">
-      Sorry but we can't find anything for "{{ categoryName }}"
-    </span>
+      We apologize, but we could not find any items in the "{{ categoryName }}" category.    </span>
   </div>
   <div v-else>
     <div

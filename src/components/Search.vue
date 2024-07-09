@@ -31,6 +31,7 @@ import Fuse from 'fuse.js'
 const itemsData = ref(items)
 const search = ref('')
 const searchResults = inject('searchResults')
+const searchQuery = inject('searchQuery')
 
 const handleSearch = async () => {
   const searchTerm = search.value.toLowerCase();
@@ -51,5 +52,7 @@ const handleSearch = async () => {
 
   // Update the search results
   searchResults.value = results;
+  // Update the search term
+  searchQuery.value = search.value;
 }
 </script>
