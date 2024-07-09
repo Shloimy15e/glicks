@@ -12,8 +12,8 @@
             </div>
           </div>
           <div class="mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6">
-            <h3 class="text-base font-medium text-gray-900">{{ perk.name }}</h3>
-            <p class="mt-3 text-sm text-gray-500">{{ perk.description }}</p>
+            <h3 class="text-lg font-medium text-gray-900">{{ perk.name }}</h3>
+            <p class="mt-3 text-md text-gray-500">{{ perk.description }}</p>
           </div>
         </div>
       </div>
@@ -27,15 +27,13 @@ const perks = ([
     name: 'Schedule an order',
     imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-calendar-light.svg',
     description:
-      'Call us up to a month in advance.',
-  },
-  {
+      'Order your baked goods up to a month in advance.',  },  {
     name: 'Gift your loved ones',
     imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-gift-card-light.svg',
     description: 'Gift your loved ones with the gift of love.',
   },
   {
-    name: 'Call us now from around the world',
+    name: 'Call us from around the world',
     imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-planet-light.svg',
     description: 'You may be far from them geographically, but you are so close in heart.',  },
 ])
