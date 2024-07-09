@@ -15,10 +15,9 @@
 
 
   <div v-if="noItems" class="my-8 font-bold">
-    <span class="text-gray-600 text-3xl">
-<p class="text-gray-600 text-3xl">
-  We apologize, but we could not find any items in the "{{ categoryName }}" category.
-</p>
+    <p class="text-gray-600 text-3xl">
+      We apologize, but we could not find any items in the "{{ categoryName }}" category.
+    </p>
   </div>
   <div v-else>
     <div
