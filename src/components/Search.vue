@@ -7,7 +7,7 @@
         @keyup.enter="search.length > 0 ? handleSearch() : null"  />
       <div class="h-full">
         <button type="submit" @click="handleSearch"
-          class="flex items-center justify-center w-12 h-full  text-gray-500 rounded-r-full sm:rounded-r-full rounded-l-none bg-amber-200 hover:bg-amber-300 active:bg-amber-200 disabled:bg-amber-200 disabled:text-gray-350 transition-all"
+          class="flex items-center justify-center w-12 h-full text-gray-500 rounded-r-full rounded-l-none bg-amber-200 hover:bg-amber-300 active:bg-amber-200 disabled:bg-amber-200 disabled:text-gray-350 transition-all"
           :title="(search.length > 0) ? 'Search' : 'Type something to enable the search button'"
           :disabled="search.length === 0">
           <div class=" w-36">
