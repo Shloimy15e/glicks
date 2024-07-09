@@ -21,7 +21,6 @@
 
       <!-- Items listed by category or filter -->
       <div v-if="noItems" class="my-8 text-gray-600 text-3xl font-bold  leading-relaxed">
-        <span>
           <p>
             We apologize, but no results matched your search for "{{ searchQuery }}". <br/> Please try again with different keywords.
           </p>
