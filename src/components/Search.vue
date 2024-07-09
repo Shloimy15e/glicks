@@ -1,6 +1,6 @@
 <template>
   <div class="grid-cols-1 grid-flow-row transition-all">
-    <div class="items-center w-full mx-auto rounded-full sm:rounded-full bg-gray-50 border-[1px] has-[:focus]:border-2 md:border-2 border-gray-300 md:border-gray-200 flex has-[:focus]:ring-1 has-[:focus]:ring-amber-200 has-[:focus]:border-white has-[:focus]:shadow-md hover:shadow-md duration-200">
+    <div class="items-center w-full mx-auto rounded-full sm:rounded-full bg-gray-50 border has-[:focus]:border-2 border-gray-300 flex has-[:focus]:ring-1 has-[:focus]:ring-amber-200 has-[:focus]:border-white has-[:focus]:shadow-md hover:shadow-md duration-200">
       <input type="search" class="w-full h-10 sm:h-12 px-4 bg-inherit text-gray-800 rounded-full focus:outline-none "
         placeholder="search" v-model="search"
         :title="(search.length > 0) ? 'Search all items' : 'Type something to enable search button'"
@@ -31,6 +31,7 @@ import Fuse from 'fuse.js'
 const itemsData = ref(items)
 const search = ref('')
 const searchResults = inject('searchResults')
+const searchQuery = inject('searchQuery')
 
 const handleSearch = async () => {
   const searchTerm = search.value.toLowerCase();
@@ -51,5 +52,7 @@ const handleSearch = async () => {
 
   // Update the search results
   searchResults.value = results;
+  // Update the search term
+  searchQuery.value = search.value;
 }
 </script>

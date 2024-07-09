@@ -23,6 +23,9 @@ export default {
       },
       colors: {
         'gray-350': '#a3abb5',
+      },
+      borderWidth: {
+        '1': '1px',
       }
     },
   },

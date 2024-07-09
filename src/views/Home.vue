@@ -9,12 +9,15 @@ const currencyState = reactive({
 })
 
 const searchResults = ref([])
+const searchQuery = ref('')
+
 provide('currencyState', currencyState)
 provide('searchResults', searchResults)
+provide('searchQuery', searchQuery)
 </script>
 
 <template>
-    <Header />
-    <Content />
-    <Footer />
+    <Header></Header>
+    <Content></Content>
+    <Footer></Footer>
 </template>

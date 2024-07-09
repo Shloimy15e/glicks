@@ -1,19 +1,16 @@
 <template>
-  <Filters @update:milk="handleMilkOptionsUpdate"
-    @update:categories="handleCategoriesUpdate" 
-    :searching="searching"/>
+  <Filters @update:milk="handleMilkOptionsUpdate" @update:categories="handleCategoriesUpdate" :searching="searching" />
   <div>
     <!-- Mobile menu -->
     <main>
       <!-- Hero section -->
-      <div v-if="!searching && !noItems"
-        class="relative w-full py-12 px-12 bg-amber-950">
+      <div v-if="!searching && !noItems" class="relative w-full py-12 px-12 bg-amber-950">
         <div class="relative z-10 text-center my-20 md:my-48">
           <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-12">
-            A taste you recognize
+            A Taste You Recognize
           </h1>
           <h2 class="text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold mb-12">
-            With a Kashrus you trust
+            With a Kashrus You Trust
             <img />
           </h2>
         </div>
@@ -23,31 +20,34 @@
       </div>
 
       <!-- Items listed by category or filter -->
-      <div v-if="noItems" class="my-8 text-gray-600 text-3xl font-bold">
+      <div v-if="noItems" class="my-8 text-gray-600 text-3xl font-bold  leading-relaxed">
         <span>
-          Sorry but we dont have that
-        </span>
+          <p>
+            We apologize, but no results matched your search for "{{ searchQuery }}". <br/> Please try again with different keywords.
+          </p>
       </div>
       <div v-else-if="searching">
         <section aria-labelledby="items-listed">
-          <div class="mx-auto max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl px-4 py-6 sm:px-6 sm:mt-12 lg:px-8 lg:mt-12 bg-inherit -pt-24">
+          <div
+            class="mx-auto max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl px-4 py-6 sm:px-6 sm:mt-12 lg:px-8 lg:mt-12 bg-inherit -pt-24">
             <div class="md:flex md:items-center md:justify-between">
               <h2 id="favorites-heading" class="text-4xl font-bold tracking-tight text-gray-700">
-                This is what we found for you
+                This is what we found for "{{ searchQuery }}"
               </h2>
             </div>
-            <div 
+            <div
               class="mt-6 opacity-9 grid grid-cols-1 gap-y-10 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:gap-x-0 justify-items-center">
               <ItemCards :items="displayResults" :itemCurrency="itemCurrency" @openModal="openModal" />
             </div>
           </div>
         </section>
-      </div> 
+      </div>
       <div v-else>
         <div v-for="category in filteredCategories">
           <section v-if="getFilteredAndSortedItems(category.name).length > 0" aria-labelledby="items-listed"
             :id="`${category.name}`">
-            <div class="mx-auto max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl px-4 py-6 sm:px-6 sm:mt-12 lg:px-8 lg:mt-12 bg-inherit -pt-24">
+            <div
+              class="mx-auto max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl px-4 py-6 sm:px-6 sm:mt-12 lg:px-8 lg:mt-12 bg-inherit -pt-24">
               <div class="md:flex md:items-center md:justify-between">
                 <h2 id="favorites-heading" class="text-4xl font-bold tracking-tight text-gray-700">
                   {{ category.name }}
@@ -55,7 +55,7 @@
               </div>
               <div
                 class="mt-6 opacity-9 grid grid-cols-1 gap-y-10 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:gap-x-0 justify-items-center">
-                <ItemCards :items="getFilteredAndSortedItems(category.name)" :itemCurrency="itemCurrency" 
+                <ItemCards :items="getFilteredAndSortedItems(category.name)" :itemCurrency="itemCurrency"
                   @openModal="openModal" />
               </div>
             </div>
@@ -95,6 +95,7 @@ const itemCurrency = computed(() => currencyState.selectedCurrency);
 const selectedCategories = ref([])
 const selectedMilkOptions = ref("")
 const searchResults = inject('searchResults');
+const searchQuery = inject('searchQuery');
 const displayResults = ref([]);
 const searching = ref(false);
 const searchNoItems = ref(false);
