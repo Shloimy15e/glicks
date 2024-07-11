@@ -26,6 +26,9 @@ export default {
       },
       borderWidth: {
         '1': '1px',
+      },
+      backgroundImage: {
+        'construction-stripes': "repeating-linear-gradient(55deg, #000000, #000000 15px,#fac800 15px,#fac800 30px)"
       }
     },
   },
