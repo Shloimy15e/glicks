@@ -1,5 +1,10 @@
 <template>
   <header class="bg-white">
+    <div class="flex bg-construction-stripes text-white font-bold justify-center row-span-1">
+      <p class="bg-black/45 w-fit px-2 my-1 text-lg rounded">
+        Site in construction
+      </p>
+    </div>
     <!-- Banner on top of nav that has location and contact info -->
     <div class="bg-gradient-to-r from-rose-400 to-rose-600 h-min">
       <div class=" flex items-center justify-between px-4 py-1 text-sm font-medium text-white">
