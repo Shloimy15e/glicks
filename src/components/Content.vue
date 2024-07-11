@@ -1,30 +1,17 @@
 <template>
   <Filters @update:milk="handleMilkOptionsUpdate" @update:categories="handleCategoriesUpdate" :searching="searching" />
-  <div>
-    <!-- Mobile menu -->
-    <main>
-      <!-- Hero section -->
-      <div v-if="!searching && !noItems" class="relative w-full py-12 px-12 bg-amber-950">
-        <div class="relative z-10 text-center my-20 md:my-48">
-          <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-12">
-            A Taste You Recognize
-          </h1>
-          <h2 class="text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold mb-12">
-            With a Kashrus You Trust
-            <img />
-          </h2>
-        </div>
-        <div class="relative mx-auto max-w-4xl flex justify-between text-white font-heading tracking-widest text-sm">
-        </div>
-        <img :src="mainImage" class="w-full h-full absolute inset-0 object-cover opacity-70">
-      </div>
-
+  <!-- Mobile menu -->
+  <main>
+    <!-- Hero section -->
+    <HeroHome v-if="!searching && !noItems" />
+    <div class="bg-polka-dots">
       <!-- Items listed by category or filter -->
-      <div v-if="noItems" class="my-8 text-gray-600 text-3xl font-bold  leading-relaxed">
-          <p>
-            We apologize, but no results matched your search for "{{ searchQuery }}". <br/> Please try again with different keywords.
-          </p>
-      </div>
+      <div v-if="noItems" class="p-8">
+        <div class="flex flex-col items-center justify-center mt-8">
+          <h1 class="text-4xl font-bold text-gray-800 mb-4">No results matched your search for "{{ searchQuery }}"</h1>
+          <p class="text-xl text-gray-600 mb-2">We apologize for the inconvenience. Please try again with different keywords.</p>
+          <p v-if="searchQuery.split(' ').length > 1" class="text-xl text-gray-600">Try your search with fewer words to get better results.</p>
+        </div>      </div>
       <div v-else-if="searching">
         <section aria-labelledby="items-listed">
           <div
@@ -42,7 +29,7 @@
         </section>
       </div>
       <div v-else>
-        <div v-for="category in filteredCategories">
+        <div v-for="category in filteredCategories" class="bg-inherit">
           <section v-if="getFilteredAndSortedItems(category.name).length > 0" aria-labelledby="items-listed"
             :id="`${category.name}`">
             <div
@@ -67,21 +54,21 @@
           </section>
         </div>
       </div>
-      <Perks />
-      <ItemDialog :isOpen="open" :item="selectedItem" :itemCurrency="itemCurrency" @update:isOpen="open = $event" />
-    </main>
-  </div>
+    </div>
+    <Perks />
+    <ItemDialog :isOpen="open" :item="selectedItem" :itemCurrency="itemCurrency" @update:isOpen="open = $event" />
+  </main>
 </template>
 
 <script setup>
 import Filters from './Filters.vue';
+import HeroHome from './HeroHome.vue';
 import ItemCards from './ItemCards.vue';
 import ItemDialog from './ItemDialog.vue';
 import Perks from './Perks.vue';
-import { ref, computed, watch, inject } from 'vue';
+import { ref, computed, watch, inject, onMounted, onUnmounted } from 'vue';
 import itemsData from '@/assets/data/items.json';
 import categoriesData from '@/assets/data/categories.json';
-import mainImage from '@/assets/images/main_image.png';
 import { RouterLink } from 'vue-router';
 
 const items = ref(itemsData)
@@ -98,6 +85,8 @@ const searchQuery = inject('searchQuery');
 const displayResults = ref([]);
 const searching = ref(false);
 const searchNoItems = ref(false);
+
+const heroImageContainer = ref(null);
 
 function handleMilkOptionsUpdate(options) {
   selectedMilkOptions.value = options;
@@ -185,4 +174,33 @@ function openModal(item) {
   open.value = true
 }
 
+// Hero section effect
+const handleScroll = () => {
+  if (heroImageContainer.value) {
+    const scrollPosition = window.scrollY;
+    console.log(scrollPosition)
+    heroImageContainer.value.style.transform = `translateY(${scrollPosition * 0.25}px)`;
+  }
+}
+
+onMounted(() => {
+  heroImageContainer.value = document.querySelector('.hero-image')
+  window.addEventListener('scroll', handleScroll);
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+})
+
+
 </script>
+
+
+<style scoped>
+.store-bg {
+  background-color: #F9FAFB;
+  opacity: 0.8;
+  background-image: radial-gradient(#FDE68A 0.5px, transparent 0.5px), radial-gradient(#FDE68A 0.5px, #F9FAFB 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+</style>
