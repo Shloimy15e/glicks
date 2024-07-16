@@ -132,7 +132,7 @@ function getFilteredAndSortedItems(category) {
   if (!items.value) return [];
   let itemsReturned = items.value.filter(item => {
     let matchesMilkCriteria = true;
-    if (selectedMilkOptions.value === "Pareve") {
+    if (selectedMilkOptions.value == "Parve") {
       matchesMilkCriteria = item.milk === false;
     } else if (selectedMilkOptions.value === "Milk") {
       matchesMilkCriteria = item.milk === true;
@@ -140,7 +140,6 @@ function getFilteredAndSortedItems(category) {
 
     // Check if the item's category matches the current category
     let isInCategory = item.description.category.includes(category);
-
     return isInCategory && matchesMilkCriteria;
   });
   return itemsReturned.slice(0, 6);
@@ -178,7 +177,6 @@ function openModal(item) {
 const handleScroll = () => {
   if (heroImageContainer.value) {
     const scrollPosition = window.scrollY;
-    console.log(scrollPosition)
     heroImageContainer.value.style.transform = `translateY(${scrollPosition * 0.25}px)`;
   }
 }
