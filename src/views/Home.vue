@@ -17,7 +17,9 @@ provide('searchQuery', searchQuery)
 </script>
 
 <template>
+  <div>
     <Header></Header>
     <Content></Content>
     <Footer></Footer>
+  </div>
 </template>

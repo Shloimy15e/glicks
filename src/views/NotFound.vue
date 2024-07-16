@@ -1,16 +1,19 @@
 <template>
-    <main class="relative isolate min-h-full">
-        <img src="https://images.unsplash.com/photo-1545972154-9bb223aac798?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3050&q=80&exp=8&con=-15&sat=-75"
-            alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-bottom" />
-        <div class="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
-            <p class="text-base font-semibold leading-8 text-white">404</p>
-            <h1 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">Page not found</h1>
-            <p class="mt-4 text-base text-white/70 sm:mt-6">Sorry, we couldn’t find the page you’re looking for.</p>
-            <div class="mt-10 flex justify-center">
-                <RouterLink to="/" class="text-sm font-semibold leading-7 text-white">
-                <span aria-hidden="true">&larr;</span>
-                    Back to home
-                </RouterLink>
+    <main class="h-screen w-screen"> 
+        <div class="relative h-full min-w-full flex justify-center items-center">
+            <div class="absolute z-10 text-center m-10 bg-gray-950 bg-opacity-30 p-5 rounded-2xl">
+                <p class="text-6xl font-semibold text-white">404</p>
+                <h1 class="mt-4 text-2xl font-bold tracking-tight text-white sm:text-5xl">Page not found</h1>
+                <p class="mt-4 text-lg text-white font-semibold sm:mt-6">Sorry, we couldn't find the page you're looking for.</p>
+                <div class="mt-10 flex justify-center">
+                    <RouterLink to="/" class="flex items-center text-3xl font-bold leading-7 text-white">
+                        <ArrowLongLeftIcon class="w-8"/>
+                        &emsp14;
+                        Back to Home                    </RouterLink>
+                </div>
+            </div>
+            <div class="h-full w-auto min-w-full flex items-center justify-center">
+                <img src="@/assets/images/not_found.jpg" class="min-h-full w-auto min-w-full sm:h-auto hero-image object-cover">
             </div>
         </div>
     </main>
@@ -19,6 +22,6 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
-
+import { ArrowLongLeftIcon } from '@heroicons/vue/16/solid';
 
 </script>

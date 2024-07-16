@@ -1,7 +1,9 @@
 <template>
-    <Header :noSearchBar="true" />
-    <CategoryContent />
-    <Footer />
+  <div>
+    <Header :noSearchBar="true"></Header>
+    <CategoryContent></CategoryContent>
+    <Footer></Footer>
+  </div>  
 </template>
 
 <script setup>
