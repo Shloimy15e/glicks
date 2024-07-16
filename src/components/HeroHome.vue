@@ -9,7 +9,7 @@
                 <img src="/images/hechsher.png" class="w-36 h-auto px-2 pb-1 mt-6 bg-white rounded-3xl" />
             </h2>
         </div>
-        <div class="h-full w-full hero-image-container overflow-clip flex items-center justify-center">
+        <div class="h-full w-full overflow-clip flex items-center justify-center">
             <img :src="mainImage" class="min-w-full min-h-[150%] w-auto sm:h-auto opacity-60 hero-image object-cover">
         </div>
     </div>

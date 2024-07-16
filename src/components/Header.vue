@@ -47,7 +47,7 @@
       <!--Top nav items-->
       <div class="hidden lg:flex gap-0 lg:gap-24 xl:gap-14 justify-between">
         <RouterLink :to="item.to" v-for="item in navigation" :key="item.name"
-          class="text-xl lg:text-2xl font-extrabold font-cherrySwashScript leading-6 h-min rounded-md py-3 px-2 lg:px-3 text-gray-900 hover:bg-amber-100 hover:text-black flex-shrink-0">
+          class="text-xl lg:text-2xl font-extrabold font-cherrySwashScript leading-6 h-min rounded-md py-3 px-2 lg:px-3 text-gray-900 hover:bg-amber-100 hover:text-black flex-shrink-0 transition-colors duration-200">
           {{ item.name }}
         </RouterLink>
       </div>
@@ -57,7 +57,7 @@
       <label v-if="!noCurrencySelector" for="currency-selector" class="sr-only">Currency</label>
       <div v-if="!noCurrencySelector" class="mr-8 flex-shrink-0">
         <select id="currency-selector" name="currency-selector" @change="updateCurrency"
-          class="text-2xl h-min w-auto aspect-1 rounded-full pb-1 px-1 text-gray-900 disabled:text-gray-500 hover:text-black bg-gray-200 hover:bg-amber-100 active:bg-amber-200 disabled:hover:bg-gray-200 flex-shrink-0 border-none focus-visible:outline-none">
+          class="text-2xl h-min w-auto aspect-1 rounded-full pb-1 px-1 text-gray-900 disabled:text-gray-500 hover:text-black bg-gray-200 hover:bg-amber-100 active:bg-amber-200 disabled:hover:bg-gray-200 flex-shrink-0 border-none focus-visible:outline-none transition-colors duration-300 active:duration-0">
           <option class="bg-gray-100 font-sans" v-for="currency in currencies" :key="currency">{{ currency }}
           </option>
         </select>
@@ -65,10 +65,12 @@
       <!--Mobile menu button-->
       <div class="flex">
         <button type="button"
-          class="inline-flex items-center justify-center rounded-md p-2 text-gray-900 bg-gray-200 hover:bg-amber-100 active:bg-amber-200"
+          class="group inline-flex items-center justify-center rounded-md p-2 text-gray-900 bg-gray-200 hover:bg-amber-100 active:bg-amber-200"
           @click="mobileMenuOpen = true">
           <span class="sr-only">Open main menu</span>
-          <Bars3Icon class="h-7 w-7" aria-hidden="true" />
+          <Bars3Icon class="h-7 w-7 group-hover:opacity-0 transition-opacity duration-300" aria-hidden="true" />
+          <Bars3BottomLeftIcon class="h-7 w-7 absolute opacity-0 group-hover:opacity-100 group-active:opacity-0 transition-opacity duration-300" aria-hidden="true" />
+          <Bars3BottomRightIcon class="h-7 w-7 absolute opacity-0 group-active:opacity-100 transition-opacity duration-300" aria-hidden="true" />
         </button>
       </div>
     </nav>
@@ -90,10 +92,10 @@
                 <img class="h-14 w-auto rounded-full" src="/favicon/favicon-glicks.png" alt="" />
               </RouterLink>
               <button type="button"
-                class="-m-2.5 rounded-md p-2.5 text-gray-800 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 active:border-none"
+                class="group -m-2.5 rounded-md p-2.5 text-gray-800 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 active:border-none transition-colors duration-200"
                 @click="mobileMenuOpen = false">
                 <span class="sr-only">Close menu</span>
-                <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+                <XMarkIcon class="h-6 w-6 group-hover:rotate-90 group-active:-rotate-90 duration-300" aria-hidden="true" />
               </button>
             </div>
             <div class="mt-6 flow-root">
@@ -127,7 +129,7 @@ import phonenumbers from '@/assets/data/phonenumbers.json';
 import Logo from './Logo.vue';
 import Search from './Search.vue';
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
-import { Bars3Icon, XMarkIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
+import { Bars3Icon, Bars3BottomLeftIcon, Bars3BottomRightIcon,  XMarkIcon, PhoneIcon, TruckIcon } from '@heroicons/vue/24/outline'
 import { CakeSlice, Cookie, HouseIcon, HandPlatter } from 'lucide-vue-next';
 
 const navigationData = {

@@ -10,8 +10,7 @@
           </div>
 
           <!-- Sitemap sections -->
-          <div
-            class="mt-10 ">
+          <div class="mt-10 ">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-y-12 sm:col-span-2 sm:grid-cols-2 sm:gap-x-8">
 
               <!-- Contact us for -->
@@ -19,16 +18,14 @@
                 <h3 class="text-lg font-medium text-gray-900">Contact us from anywhere</h3>
                 <ul role="list" class="mt-6 space-y-6 flex flex-col items-center justify-center">
                   <li v-for="phonenumber in phonenumbers" :key="phonenumber.name" class="text-md">
-                    <a :href="phonenumber.href"
+                    <a :href="phonenumber.number !== 'will be posted' ? `tel:${phonenumber.number}` : '/#contact-us'"
                       class="text-gray-500 hover:text-amber-400 flex gap-2 justify-between w-48">
                       <span>{{ phonenumber.name }}:</span>
                       <span>{{ phonenumber.number }} </span>
                     </a>
                   </li>
-                  <li class="w-52">
-                    <p class="text-md text-gray-500 font-bold">
-                      Please be advised that we accept phone orders only
-                    </p>
+                  <li class="w-full">
+                    <p class="text-md text-rose-500 font-bold whitespace-break-spaces tracking-tight">We accept phone orders only.</p>
                   </li>
                 </ul>
               </div>
