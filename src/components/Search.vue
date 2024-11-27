@@ -1,13 +1,13 @@
 <template>
   <div class="grid-cols-1 grid-flow-row transition-all">
-    <div class="items-center w-full mx-auto rounded-full sm:rounded-full bg-gray-50 border has-[:focus]:border-2 border-gray-300 flex has-[:focus]:ring-1 has-[:focus]:ring-amber-200 has-[:focus]:border-white has-[:focus]:shadow-md hover:shadow-md duration-200">
+    <div class="items-center w-full mx-auto rounded-full sm:rounded-full bg-gray-50 border has-[:focus]:border-2 border-gray-300 flex has-[:focus]:ring-1 has-[:focus]:ring-beige-2 has-[:focus]:border-white has-[:focus]:shadow-md hover:shadow-md duration-200">
       <input type="search" class="w-full h-10 sm:h-12 px-4 bg-inherit text-gray-800 rounded-full focus:outline-none "
         placeholder="search" v-model="search"
         :title="(search.length > 0) ? 'Search all items' : 'Type something to enable search button'"
         @keyup.enter="search.length > 0 ? handleSearch() : null"  />
       <div class="h-full">
         <button type="submit" @click="handleSearch"
-          class="flex items-center justify-center w-12 h-full text-gray-500 rounded-r-full rounded-l-none bg-amber-200 hover:bg-amber-300 active:bg-amber-200 disabled:bg-amber-200 disabled:text-gray-350 transition-all"
+          class="flex items-center justify-center w-12 h-full text-gray-500 rounded-r-full rounded-l-none bg-beige-2 hover:bg-beige-3 active:bg-beige-2 disabled:bg-primary-beige disabled:text-gray-350 transition-all"
           :title="(search.length > 0) ? 'Search' : 'Type something to enable the search button'"
           :disabled="search.length === 0">
           <div class=" w-36">

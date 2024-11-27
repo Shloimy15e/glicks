@@ -11,6 +11,14 @@ const routes = [
   { path: '/faq', component: FAQ, name: 'faq' },
   { path: '/:pathMatch(.*)*', component: NotFound, name: 'not-found' },
   
+  {
+    path: '/admin',
+    component: () => import('./views/admin/Admin.vue')
+  },
+  {
+  path: '/admin/addItems',
+  component: () => import('./views/admin/AddItems.vue')
+  }
 ];
 
 const router = createRouter({

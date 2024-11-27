@@ -5,7 +5,7 @@
             <img :src="'/images/' + item.imageSrc" :alt="item.imageAlt" class="w-full h-full object-cover rounded-lg" />
         </div>
         <h3 class="mt-4 text-lg">
-            <a @click="openModal(item)" type="button" class="text-amber-700">
+            <a @click="openModal(item)" type="button" class="text-primary-brown hover:text-brown-2">
                 <span class="absolute inset-0"></span>
                 {{ item.name }}
             </a>

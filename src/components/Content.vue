@@ -55,7 +55,7 @@
         </div>
       </div>
     </div>
-    <Perks />
+    <!-- <Perks /> -->
     <ItemDialog :isOpen="open" :item="selectedItem" :itemCurrency="itemCurrency" @update:isOpen="open = $event" />
   </main>
 </template>

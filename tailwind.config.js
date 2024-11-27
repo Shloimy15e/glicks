@@ -20,6 +20,14 @@ export default {
       },
       colors: {
         "gray-350": "#a3abb5",
+        "primary-beige": "#feeddd",
+        "beige-0": "#fff2e6",
+        "beige-2": "#ffe1c4",
+        "beige-3": "#ffd0a3",
+        "primary-red": "#be1d2c",
+        "primary-brown": "#976035",
+        "brown-0": "#c7a47d",
+        "brown-2": "#5f3f1c",
       },
       borderWidth: {
         1: "1px",

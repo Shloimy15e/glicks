@@ -25,7 +25,7 @@
                     </a>
                   </li>
                   <li class="w-full">
-                    <p class="text-md text-rose-500 font-bold whitespace-break-spaces tracking-tight">We accept phone orders only.</p>
+                    <p class="text-md text-primary-red font-bold whitespace-break-spaces tracking-tight">We accept phone orders only.</p>
                   </li>
                 </ul>
               </div>

@@ -28,17 +28,17 @@
                     {{ item.description.text }}
                   </p>
                 </div>
-                <div class="mt-4 flex items-center">
-                  <h4 class="text-amber-400">
+                <div class="mt-4 flex items-center gap-2">
+                  <h4 class="text-black font-semibold">
                     Allergens:
                   </h4>
-                  <p class="text-gray-600 ml-4 flex items-center justify-start"
+                  <p class="text-gray-600 flex items-center justify-start"
                     v-for="allergen in item.description.allergens">
                     {{ allergen }}
-                  </p>
+                  </p>,
                 </div>
                 <div class="flex item justify-center">
-                  <p class="mt-1 text-lg bg-amber-100 px-2 rounded-lg font-medium text-gray-900">
+                  <p class="text-xl px-2 font-medium text-gray-900 border border-primary-red">
                     {{ itemCurrency }} {{ item.price[itemCurrency] }}
                   </p>
                 </div>
@@ -49,7 +49,7 @@
                     {{ item.milk ? 'Milk' : 'Pareve' }} 
                 </p>
                   <p v-for="tag in item.description.tags" 
-                    class="text-sm font-semibold text-gray-700 bg-gray-200 w-min h-min px-1 py-0.5 m-2 rounded-md flex items-center">
+                    class="text-sm font-semibold text-primary-brown bg-beige-0 w-min h-min px-1 py-0.5 m-2 rounded-md flex items-center">
                     {{ tag }}
                   </p>
                 </div>

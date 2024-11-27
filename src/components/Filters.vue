@@ -5,11 +5,11 @@
       :class="searching ? 'justify-center' : 'justify-between'">
       <Search class="grid sm:hidden w-full" />
       <button type="button" v-if="!searching"
-        class="flex group items-center text-sm font-medium leading-6 h-fit text-gray-700 hover:text-gray-900 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 sm:hidden transition-colors duration-100"
+        class="flex group items-center text-sm font-medium leading-6 h-fit text-primary-brown hover:text-gray-900 bg-neutral-200 hover:bg-beige-0 active:bg-primary-beige sm:hidden transition-colors duration-100"
         @click="toggleFiltersMobile" title="Toggle filters">
         Filters
         <span
-          class="ml-1.5 rounded-full bg-amber-100 group-hover:bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
+          class="ml-1.5 rounded-full bg-beige-0 group-hover:bg-neutral-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
           {{ amountCheckedFilters }}
         </span>
       </button>
@@ -32,7 +32,7 @@
               <div class="flex items-center justify-between px-4">
                 <h2 class="text-lg font-medium text-gray-900">Filters</h2>
                 <button type="button"
-                  class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-gray-200 hover:bg-amber-100 active:bg-amber-200 p-2"
+                  class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-neutral-200 hover:bg-beige-0 active:bg-primary-beige p-2"
                   @click="toggleFiltersMobile" title="Close filters">
                   <span class="sr-only">Close menu</span>
                   <XMarkIcon class="h-6 w-6 fill-gray-500 stroke-2" aria-hidden="true" />
@@ -45,13 +45,13 @@
                 <Disclosure as="div" class="border-t border-gray-200 px-4 py-6" v-slot="{ open }">
                   <h3 class="-mx-2 -my-3 flow-root">
                     <DisclosureButton title="Toggle category filters"
-                      class="group w-full flex justify-between bg-gray-200 hover:bg-amber-100 active:bg-amber-200 px-2 py-3 text-sm text-gray-900">
+                      class="group w-full flex justify-between bg-neutral-200 hover:bg-beige-0 active:bg-primary-beige px-2 py-3 text-sm text-gray-900">
                       <div class="flex items-center justify-start">
                         <span class="font-medium text-gray-900">
                           Categories
                         </span>
                         <span
-                          class="ml-2 rounded-full w-5 aspect-1 bg-amber-100 group-hover:bg-gray-200 text-sm font-semibold tabular-nums text-gray-700">
+                          class="ml-2 rounded-full w-5 aspect-1 bg-beige-0 group-hover:bg-gray-200 text-sm font-semibold tabular-nums text-gray-700">
                           {{ amountCheckedCategories }}
                         </span>
                       </div>
@@ -86,7 +86,7 @@
                 <Disclosure as="div" class="px-4 py-6" v-slot="{ open }">
                   <h3 class="-mx-2 -my-3 flow-root">
                     <DisclosureButton title="Toggle milk/parve filters"
-                      class="w-full flex justify-between bg-gray-200 hover:bg-amber-100 active:bg-amber-200 px-2 py-3 text-sm text-gray-900">
+                      class="w-full flex justify-between bg-neutral-200 hover:bg-beige-0 active:bg-primary-beige px-2 py-3 text-sm text-gray-900">
                       <div class="flex items-center justify-start">
                         <span class="font-medium text-gray-900">
                           Milk/Parve
@@ -131,7 +131,7 @@
               </form>
               <!-- Active filters mobile -->
               <div
-                class="mx-auto w-11/12 bg-gray-200 grid grid-cols-1 gap-y-3 items-center justify-between px-2 py-1 rounded-2xl"
+                class="mx-auto w-11/12 bg-neutral-200 grid grid-cols-1 gap-y-3 items-center justify-between px-2 py-1 rounded-2xl"
                 :class="amountCheckedFilters ? 'p-2' : 'p-1'">
                 <div class="flex items-center duration-200"
                   :class="amountCheckedFilters ? 'justify-center border-b pb-2' : 'justify-start'">
@@ -141,7 +141,7 @@
                     Filters
                     <span class="sr-only">active</span>
                     <span
-                      class="flex justify-center ml-2 rounded-full w-5 aspect-1 bg-amber-100 text-sm font-semibold tabular-nums text-gray-700">
+                      class="flex justify-center ml-2 rounded-full w-5 aspect-1 bg-beige-0 text-sm font-semibold tabular-nums text-gray-700">
                       {{ amountCheckedFilters }}
                     </span>
                   </h3>
@@ -159,7 +159,7 @@
                           class="m-1 inline-flex items-center rounded-full border border-gray-200 bg-white py-1.5 pl-3 pr-2 text-sm font-medium text-gray-900">
                           <span>{{ activeFilter.name }}</span>
                           <button type="button" @click="removeFilter(activeFilter)" :value="activeFilter.name"
-                            class="ml-1 inline-flex h-5 w-5 flex-shrink-0 rounded-full p-1 -mb-0.5 text-gray-600 hover:text-gray-700 bg-gray-200 hover:bg-amber-100 active:bg-amber-200"
+                            class="ml-1 inline-flex h-5 w-5 flex-shrink-0 rounded-full p-1 -mb-0.5 text-gray-600 hover:text-gray-700 bg-gray-200 hover:bg-beige-0 active:bg-primary-beige"
                             :aria-label="`Remove filter for - ${activeFilter.name}`"
                             :title="`Remove filter - ${activeFilter.name}`">
                             <span class="sr-only">Remove filter for {{ activeFilter.name }}</span>
@@ -174,7 +174,7 @@
                 </transition>
                 <div v-if="amountCheckedFilters" class="flex justify-center items-center">
                   <button @click="removeFilter('clearAll')" v-if="amountCheckedFilters"
-                    class="bg-amber-200 hover:bg-amber-200 w-full rounded-xl active:bg-amber-300"
+                    class="bg-primary-beige hover:bg-primary-beige w-full rounded-xl active:bg-amber-300"
                     title="Clear all filters">
                     Clear all
                   </button>
@@ -189,7 +189,7 @@
     <!-- Filters for lg screens -->
     <!-- Toggle Button for filters for lg screens -->
 
-    <button @click="toggleFilters" :class="['hidden sm:flex items-center justify-between w-full h-min leading-none duration-200 bg-gray-200 hover:bg-amber-100 active:bg-amber-200 shadow-sm rounded-none',
+    <button @click="toggleFilters" :class="['hidden sm:flex items-center justify-between w-full h-min leading-none duration-200 bg-neutral-200 hover:bg-beige-0 active:bg-primary-beige shadow-sm rounded-none',
       filtersVisible ? 'p-1' : 'p-2.5 xl:p-3']" v-if="!searching" aria-label="Toggle filters" title="Toggle filters">
       <div class="flex items-center">
         <span v-if="filtersVisible" class="text-xs">Hide Filters</span>
@@ -218,10 +218,10 @@
                     <!-- Category filter lg screen -->
                     <Popover class="relative inline-block px-4 text-left">
                       <PopoverButton title="Toggle category filters"
-                        class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900 bg-gray-200 hover:bg-amber-100 active:bg-amber-200">
+                        class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900 bg-neutral-200 hover:bg-beige-0 active:bg-primary-beige">
                         <span>Categories</span>
                         <span
-                          class="ml-1.5 rounded-lg bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
+                          class="ml-1.5 rounded-lg bg-neutral-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
                           {{ amountCheckedCategories }}
                         </span>
                         <ChevronDownIcon
@@ -253,7 +253,7 @@
                     <!-- Milk filter lg screen -->
                     <Popover class="relative inline-block px-4 text-left">
                       <PopoverButton title="Toggle milk/parve filters"
-                        class="group inline-flex justify-center items-center text-sm font-medium text-gray-700 hover:text-gray-900 bg-gray-200 hover:bg-amber-100 active:bg-amber-200">
+                        class="group inline-flex justify-center items-center text-sm font-medium text-gray-700 hover:text-gray-900 bg-gray-200 hover:bg-beige-0 active:bg-primary-beige">
                         <span>Milk/Parve</span>
                         <span class="rounded-full w-4 aspect-1 mx-1"
                           :class="checkedMilkOptions === 'Both' ? 'bg-gray-500' : checkedMilkOptions === 'Milk' ? 'bg-blue-600' : 'bg-green-500'"></span>
@@ -305,7 +305,7 @@
                   Filters
                   <span class="sr-only">active</span>
                   <span
-                    class="ml-1.5 rounded-full bg-amber-100 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
+                    class="ml-1.5 rounded-full bg-beige-0 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
                     {{ amountCheckedFilters }}
                   </span>
                 </h3>
@@ -315,7 +315,7 @@
                       class="m-1 inline-flex items-center rounded-full border border-gray-200 bg-white py-1.5 pl-3 pr-2 text-sm font-medium text-gray-900">
                       <span>{{ activeFilter.name }}</span>
                       <button type="button" @click="removeFilter(activeFilter)" :value="activeFilter.name"
-                        class="ml-1 inline-flex h-5 w-5 flex-shrink-0 rounded-full p-1 -mb-0.5 text-gray-600 hover:text-gray-700 bg-gray-200 hover:bg-amber-100 active:bg-amber-200"
+                        class="ml-1 inline-flex h-5 w-5 flex-shrink-0 rounded-full p-1 -mb-0.5 text-gray-600 hover:text-gray-700 bg-neutral-200 hover:bg-beige-0 active:bg-primary-beige"
                         aria-labeledby="remove-lg-label" :title="`Remove filter for ${activeFilter.name}`">
                         <span class="sr-only" id="remove-lg-label">Remove filter for {{ activeFilter.name }}</span>
                         <svg class="h-3 w-3" stroke="currentColor" fill="none" viewBox="0 0 8 8">
@@ -328,7 +328,7 @@
               </div>
               <div>
                 <button @click="removeFilter('clearAll')" v-if="amountCheckedFilters"
-                  class="bg-white hover:bg-amber-100 active:bg-amber-200" title="Clear all filters">
+                  class="bg-white hover:bg-beige-0 active:bg-primary-beige" title="Clear all filters">
                   Clear all
                 </button>
               </div>
