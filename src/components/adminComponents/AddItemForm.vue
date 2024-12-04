@@ -6,7 +6,7 @@
         <!-- Add item form card -->
         <div class="grid grid-cols-1 w-full justify-items-center">
 
-          <div class="m-10 p-6 grid grid-cols-2 gap-y-8 justify-items-start w-5/6 shadow-lg rounded-lg bg-gray-50">
+          <div class="m-10 p-6 flex flex-col lg:flex-row gap-y-8 justify-items-start w-5/6 shadow-lg rounded-lg bg-gray-50">
             <div class="border-r border-gray-300 pr-6">
               <div class="sm:col-span-full justify-start w-full">
                 <span class="w-full flex justify-center my-2">

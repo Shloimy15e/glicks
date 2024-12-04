@@ -65,11 +65,11 @@
             "type": "array",
             "enum": [
               "Cake",
-              "Cookies",
-              "Cupcakes",
-              "Desserts",
-              "Muffins",
-              "Pastries",
+              "Cookie",
+              "Cupcake",
+              "Dessert",
+              "Muffin",
+              "Pastry",
               "Cheese",
               "Healthy",
               "Gluten free"
