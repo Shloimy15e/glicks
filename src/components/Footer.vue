@@ -6,7 +6,7 @@
         <div class="border-t border-gray-200 py-20">
           <!-- Image section -->
           <div class="col-span-1 md:col-span-2 lg:col-start-1 lg:row-start-1">
-            <img src="/public/favicon/favicon-glicks.png" alt="Secondary logo" class="h-12 w-auto rounded-full" />
+            <img src="/src/assets/images/small-logo.png" alt="Secondary logo" class="h-12 w-auto rounded-full" />
           </div>
 
           <!-- Sitemap sections -->

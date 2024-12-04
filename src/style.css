@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 @font-face {
   font-family: 'LuxuriousScript';
@@ -59,19 +60,21 @@
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius: 100vh;
-  background: #E5E7EB;
+  background: #fff2e6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #F3F4F6;
+  background: #976035;
   border-radius: 100vh;
-  border: 3px solid #FDE68A;
+  border: 3px solid #ffe1c4;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #FDE68A;
-  border-color: #ffffff;
+  background: #5f3f1c;
+  border-color: #ffd0a3;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 a {
