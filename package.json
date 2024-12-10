@@ -18,6 +18,7 @@
     "removeCategories": "node ./src/scripts/removeCategories.mjs"
   },
   "dependencies": {
+    "@formkit/vue": "^1.6.9",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",

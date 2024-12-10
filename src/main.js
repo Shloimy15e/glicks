@@ -1,7 +1,13 @@
-import './style.css'
+import "./style.css";
 
-import App from './App.vue'
-import { createApp } from 'vue'
-import router from './router'
+import { defaultConfig, plugin } from "@formkit/vue";
 
-createApp(App).use(router).mount('#app')
+import App from "./App.vue";
+import config from "../formkit.config.js";
+import { createApp } from "vue";
+import { register } from "swiper/element/bundle";
+import router from "./router";
+
+register();
+
+createApp(App).use(plugin, defaultConfig(config)).use(router).mount("#app");

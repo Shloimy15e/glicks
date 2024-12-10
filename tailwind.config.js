@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}", "formkit.them.mjs"],
   theme: {
     extend: {
       screens: {
@@ -45,16 +45,17 @@ export default {
         {
           ".bg-polka-dots": {
             "background-color": "#F9FAFB",
-            "background-image": "radial-gradient(#FDE68A 0.5px, transparent 0.5px), radial-gradient(#FDE68A 0.5px, #F9FAFB 0.5px);",
+            "background-image":
+              "radial-gradient(#FDE68A 0.5px, transparent 0.5px), radial-gradient(#FDE68A 0.5px, #F9FAFB 0.5px);",
             "background-size": "20px 20px;",
             "background-position": "0 0, 10px 10px;",
           },
-        },"background-color: #e5e5f7;\
+        },
+        "background-color: #e5e5f7;\
 opacity: 0.8;\
 background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);\
 background-size: 20px 20px;\
-background-position: 0 0,10px 10px;"
-        ["responsive", "hover"]
+background-position: 0 0,10px 10px;"[("responsive", "hover")]
       );
     },
   ],
