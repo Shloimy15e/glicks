@@ -10,4 +10,4 @@ import router from "./router";
 
 register();
 
-createApp(App).use(plugin, defaultConfig(config)).use(router).mount("#app");
+createApp(App).use(plugin, defaultConfig).use(router).mount("#app");

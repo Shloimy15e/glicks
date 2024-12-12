@@ -11,7 +11,7 @@
           leave-from="opacity-100"
           leave-to="opacity-0"
         >
-          <div class="fixed inset-0 bg-black/25" />
+            <div class="fixed inset-0 bg-black/25 backdrop-blur-lg" />
         </TransitionChild>
 
         <div class="fixed inset-0 overflow-y-auto">
@@ -34,30 +34,28 @@
                   as="h3"
                   class="text-lg font-medium leading-6 text-gray-900"
                 >
-                  <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                      <div
-                        class="swiper-slide"
-                        v-for="(image, index) in [
-                          item.imageSrc,
-                          item.imageSrc,
-                          item.imageSrc,
-                        ]"
-                        :key="index"
-                      >
-                        <img
-                          :src="`/images/${image}`"
-                          alt="Slide image"
-                          class="rounded-t-xl"
-                        />
-                      </div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- Add Navigation -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                  </div>
+                  <swiper
+                    slides-per-view="1"
+                    speed="1000"
+                    loop="true"
+                    class="aspect-1.5 w-full"
+                    effect="slide"
+                    :autoplay="{
+                      disableOnInteraction: false,
+                      pauseOnMouseEnter: true,
+                    }"
+                  >
+                    <swiper-slide
+                      v-for="(image, index) in item.images"
+                      :key="index"
+                    >
+                      <img
+                        :src="`/public/images/${image}`"
+                        alt="Slide image"
+                        class="rounded-t-xl h-full w-auto object-cover aspect-1.5"
+                      />
+                    </swiper-slide>
+                  </swiper>
                   <h3 class="mt-4 text-xl text-gray-700">
                     {{ item?.name }}
                   </h3>
@@ -124,33 +122,11 @@ const props = defineProps({
   item: Object,
   itemCurrency: String,
 });
-import Swiper from "swiper";
+import { Swiper, SwiperSlide } from "swiper/vue";
 // import Swiper styles
 import "swiper/css";
-
-import {  nextTick } from "vue";
-
-onMounted(() => {
-  nextTick(() => {
-    const swiper = new Swiper(".swiper-container", {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      loop: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  });
-});
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
 const emit = defineEmits(["update:isOpen"]);
 
@@ -159,15 +135,15 @@ function closeModal() {
 }
 </script>
 
-<style scoped>
-.swiper-container {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+<style>
+.swiper {
+  --swiper-navigation-size: 20px;
+  --swiper-navigation-top-offset: 50%;
+  --swiper-navigation-sides-offset: 6px;
+  --swiper-navigation-color: #ef466370;
+
+  --swiper-pagination-bottom: 4px;
+  --swiper-pagination-bullet-inactive-color: theme("colors.white");
+  --swiper-pagination-color: theme("colors.black");
 }
 </style>

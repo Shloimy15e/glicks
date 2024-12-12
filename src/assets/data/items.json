@@ -1,14 +1,14 @@
 [
     {
         "id": 1,
-        "name": "Classic Chocolate Cake",
+        "name": "Brownie Cake",
         "price": {
             "$": 7,
             "€": 6.5,
             "£": 6,
-            "₪": 25
+            "₪": 22
         },
-        "images": ["perfect_chocolate_cake_crop.jpg", "perfect_chocolate_cake.jpg"],
+        "images": ["brownie_cake_1.jpg", "brownie_cake_2.jpg", "brownie_cake_3.jpg", "brownie_cake_4.jpg", "brownie_cake_5.jpg"],
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "Classic and good!",
@@ -26,14 +26,14 @@
     },
     {
         "id": 2,
-        "name": "Marble Cake",
+        "name": "Coffee Delight",
         "price": {
             "$": 7,
             "€": 6.5,
             "£": 6,
             "₪": 25
         },
-        "imageSrc": "marble_cake.jpg",
+        "images": ["coffee_1.jpg", "coffee_2.jpg", "coffee_3.jpg"],
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "Better than it looks!",
@@ -51,14 +51,14 @@
     },
     {
         "id": 3,
-        "name": "Chocolate Babke",
+        "name": "Kokosh Cake",
         "price": {
             "$": 7,
             "€": 6.5,
             "£": 6,
             "₪": 25
         },
-        "imageSrc": "babke.jpg",
+        "images": ["kokosh_1.jpg", "kokosh_2.jpg", "kokosh_3.jpg", "kokosh_4.jpg"],
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "You'll love it!",
@@ -76,14 +76,14 @@
     },
     {
         "id": 4,
-        "name": "Classic Chocolate Chip Cookies",
+        "name": "Crinkle Cookies",
         "price": {
             "$": 7,
             "€": 6.5,
             "£": 6,
             "₪": 25
         },
-        "imageSrc": "classic-chocolate-chip-cookies.jpg",
+        "images": ["crinkle_1.jpg", "crinkle_2.jpg", "crinkle_3.jpg", "crinkle_4.jpg", "crinkle_5.jpg"],
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "It's good",
@@ -100,73 +100,22 @@
         "milk": false
     },
     {
-        "id": 6,
-        "name": "test1",
-        "price": {
-            "$": 2,
-            "₪": 2,
-            "£": 2,
-            "€": 2
-        },
-        "imageSrc": "carrot_muffin.jpg",
-        "imageAlt": "test1",
-        "description": {
-            "short_text": "test",
-            "text": "test",
-            "allergens": [
-                "Eggs",
-                "Gluten"
-            ],
-            "category": "Cakes",
-            "tags": [
-                "Muffin",
-                "Cheese"
-            ]
-        },
-        "milk": true
-    },
-    {
-        "id": 7,
-        "name": "Coffee cake",
-        "price": {
-            "$": 7,
-            "₪": 26,
-            "£": 6,
-            "€": 6
-        },
-        "imageSrc": "coffee_cake.jpg",
-        "imageAlt": "Coffee cake",
-        "description": {
-            "short_text": "A fluffy coffee delight",
-            "text": "A fluffy coffee cake with a hint of cocoa that can make a long Friday take even faster!",
-            "allergens": [
-                "Eggs",
-                "Gluten"
-            ],
-            "category": "Cakes",
-            "tags": [
-                "Cake"
-            ]
-        },
-        "milk": true
-    },
-    {
         "id": 8,
-        "name": "Babke",
+        "name": "Honey Cookies",
         "price": {
             "$": null,
             "₪": 22,
             "£": null,
             "€": null
         },
-        "imageSrc": "babke.jpg",
-        "imageAlt": "Babke",
+        "images": ["honey_1.jpg", "honey_2.jpg", "honey_3.jpg", "honey_4.jpg"], 
+        "imageAlt": "Honey Cookies",
         "description": {
             "short_text": "test",
             "text": "Test",
             "allergens": [],
-            "category": "Cakes"
+            "category": "Cookies"
         },
-        "milk": true
+        "milk": false
     }
 ]
