@@ -50,7 +50,7 @@
                       :key="index"
                     >
                       <img
-                        :src="`/public/images/${image}`"
+                        :src="`/images/${image}`"
                         alt="Slide image"
                         class="rounded-t-xl h-full w-auto object-cover aspect-1.5"
                       />
