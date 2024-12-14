@@ -108,7 +108,7 @@
             "£": null,
             "€": null
         },
-        "images": ["honey_1.jpg", "honey_2.jpg", "honey_3.jpg", "honey_4.jpg"], 
+        "images": ["honey_1.jpg", "honey_2.jpg", "honey_3.jpg"], 
         "imageAlt": "Honey Cookies",
         "description": {
             "short_text": "test",
