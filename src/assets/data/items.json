@@ -12,7 +12,7 @@
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "Classic and good!",
-            "text": "Placeholder for descriptive text for the item",
+            "text": "Perfect brownie cake for any occasion. Made with the finest ingredients and lots of love.",
             "allergens": [
                 "eggs",
                 "gluten"
@@ -37,7 +37,7 @@
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "Better than it looks!",
-            "text": "Placeholder for descriptive text for the item",
+            "text": "I have never tasted a better coffee cake than this one. - Every customer ever",
             "allergens": [
                 "eggs",
                 "gluten"
@@ -62,7 +62,7 @@
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "You'll love it!",
-            "text": "Placeholder for descriptive text for the item",
+            "text": "A delightful Kokosh cake with rich chocolate swirls and a soft, moist texture. Perfect for any chocolate lover.",
             "allergens": [
                 "eggs",
                 "gluten"
@@ -86,8 +86,8 @@
         "images": ["crinkle_1.jpg", "crinkle_2.jpg", "crinkle_3.jpg", "crinkle_4.jpg", "crinkle_5.jpg"],
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
-            "short_text": "It's good",
-            "text": "Placeholder for descriptive text for the item",
+            "short_text": "Deliciously soft and chewy!",
+            "text": "These crinkle cookies are a delightful treat with a soft and chewy texture, perfect for any occasion.",
             "allergens": [
                 "eggs",
                 "gluten"
@@ -111,8 +111,8 @@
         "images": ["honey_1.jpg", "honey_2.jpg", "honey_3.jpg"], 
         "imageAlt": "Honey Cookies",
         "description": {
-            "short_text": "test",
-            "text": "Test",
+            "short_text": "Sweet and chewy honey cookies!",
+            "text": "Perfectly sweet and chewy, these cookies are made with real honey for a delightful treat.",
             "allergens": [],
             "category": "Cookies"
         },

@@ -65,7 +65,7 @@
                     {{ item.description.text }}
                   </p>
                 </div>
-                <div class="mt-4 flex items-center gap-2">
+                <!-- <div class="mt-4 flex items-center gap-2">
                   <h4 class="text-black font-semibold">Allergens:</h4>
                   <p
                     class="text-gray-600 flex items-center justify-start"
@@ -74,7 +74,7 @@
                     {{ allergen }}
                   </p>
                   ,
-                </div>
+                </div> -->
                 <div class="flex item justify-center">
                   <p
                     class="text-xl px-2 font-medium text-gray-900 border border-primary-red"

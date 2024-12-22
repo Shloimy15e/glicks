@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mt-6 opacity-9 grid grid-cols-1 gap-y-10 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:gap-x-0 justify-items-center"
+    class="mt-6 opacity-9 grid grid-cols-1 gap-y-10 sm:gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:gap-x-0 justify-items-center"
   >
     <div
       v-for="item in items"
@@ -12,15 +12,15 @@
         slides-per-view="1"
         speed="1000"
         loop="true"
-        class="aspect-1.5 w-full"
+        class="aspect-1.5 w-full min-h-44"
         effect="slide"
         :autoplay="{ disableOnInteraction: false, pauseOnMouseEnter: true }"
       >
         <swiper-slide v-for="(image, index) in item.images" :key="index">
           <img
-        :src="`/images/${image}`"
-        alt="Slide image"
-        class="rounded-t-xl h-full w-auto object-cover aspect-1.5"
+            :src="`/images/${image}`"
+            alt="Slide image"
+            class="rounded-t-xl h-full w-auto object-cover aspect-1.5"
           />
         </swiper-slide>
       </swiper>
@@ -30,6 +30,9 @@
           {{ item.name }}
         </a>
       </h3>
+      <p class="mt-1 text-sm font-normal text-gray-500">
+        {{ item.description.short_text }}
+      </p>
       <p class="mt-1 text-lg font-medium text-gray-900">
         {{ itemCurrency + item.price[itemCurrency] }}
       </p>

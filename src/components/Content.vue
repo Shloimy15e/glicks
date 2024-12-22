@@ -183,7 +183,7 @@ function getFilteredAndSortedItems(category) {
     let isInCategory = item.description.category.includes(category);
     return isInCategory && matchesMilkCriteria;
   });
-  return itemsReturned.slice(0, 6);
+  return itemsReturned.slice(0, 10);
 }
 /**
  * Checks if according to selected categories and filter there are no items
