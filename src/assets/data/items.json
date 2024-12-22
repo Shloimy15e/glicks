@@ -6,7 +6,7 @@
             "$": 7,
             "€": 6.5,
             "£": 6,
-            "₪": 22
+            "₪": 25
         },
         "images": ["brownie_cake_1.jpg", "brownie_cake_2.jpg", "brownie_cake_3.jpg", "brownie_cake_4.jpg", "brownie_cake_5.jpg"],
         "imageAlt": "Perfect crop of classic chocolate cake.",
@@ -56,7 +56,7 @@
             "$": 7,
             "€": 6.5,
             "£": 6,
-            "₪": 25
+            "₪": 33
         },
         "images": ["kokosh_1.jpg", "kokosh_2.jpg", "kokosh_3.jpg", "kokosh_4.jpg"],
         "imageAlt": "Perfect crop of classic chocolate cake.",
@@ -81,7 +81,7 @@
             "$": 7,
             "€": 6.5,
             "£": 6,
-            "₪": 25
+            "₪": 22
         },
         "images": ["crinkle_1.jpg", "crinkle_2.jpg", "crinkle_3.jpg", "crinkle_4.jpg", "crinkle_5.jpg"],
         "imageAlt": "Perfect crop of classic chocolate cake.",

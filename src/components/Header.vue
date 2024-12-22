@@ -70,6 +70,7 @@
         >
         <div v-if="!noCurrencySelector" class="flex-shrink-0 lg:hidden ms-3">
           <select
+            disabled
             id="currency-selector"
             name="currency-selector"
             @change="updateCurrency"
@@ -141,6 +142,7 @@
           >
           <div v-if="!noCurrencySelector" class="flex-shrink-0">
             <select
+              disabled
               id="currency-selector"
               name="currency-selector"
               @change="updateCurrency"
@@ -212,7 +214,7 @@
                 <span class="sr-only">Glicks Bakery</span>
                 <img
                   class="h-14 w-auto rounded-full"
-                  src="/favicon/favicon-glicks.png"
+                  src="/src/assets/images/small-logo.png"
                   alt=""
                 />
               </RouterLink>
