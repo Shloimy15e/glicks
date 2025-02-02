@@ -5,7 +5,7 @@
     <div
       v-for="item in items"
       :key="item.id"
-      class="group relative bg-white w-5/6 aspect-1 rounded-xl shadow-md pb-3 transition hover:scale-105 hover:cursor-pointer duration-300"
+      class="group relative bg-white w-5/6 aspect-1 rounded-xl shadow-md pb-3 transition hover:scale-105 hover:cursor-pointer duration-300 min-h-full"
       @click="openModal(item)"
     >
       <swiper

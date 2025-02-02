@@ -8,7 +8,13 @@
             "£": 6,
             "₪": 25
         },
-        "images": ["brownie_cake_1.jpg", "brownie_cake_2.jpg", "brownie_cake_3.jpg", "brownie_cake_4.jpg", "brownie_cake_5.jpg"],
+        "images": [
+            "brownie_cake_1.jpg",
+            "brownie_cake_2.jpg",
+            "brownie_cake_3.jpg",
+            "brownie_cake_4.jpg",
+            "brownie_cake_5.jpg"
+        ],
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "Classic and good!",
@@ -33,7 +39,11 @@
             "£": 6,
             "₪": 25
         },
-        "images": ["coffee_1.jpg", "coffee_2.jpg", "coffee_3.jpg"],
+        "images": [
+            "coffee_1.jpg",
+            "coffee_2.jpg",
+            "coffee_3.jpg"
+        ],
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "Better than it looks!",
@@ -58,7 +68,12 @@
             "£": 6,
             "₪": 33
         },
-        "images": ["kokosh_1.jpg", "kokosh_2.jpg", "kokosh_3.jpg", "kokosh_4.jpg"],
+        "images": [
+            "kokosh_1.jpg",
+            "kokosh_2.jpg",
+            "kokosh_3.jpg",
+            "kokosh_4.jpg"
+        ],
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "You'll love it!",
@@ -83,7 +98,13 @@
             "£": 6,
             "₪": 22
         },
-        "images": ["crinkle_1.jpg", "crinkle_2.jpg", "crinkle_3.jpg", "crinkle_4.jpg", "crinkle_5.jpg"],
+        "images": [
+            "crinkle_1.jpg",
+            "crinkle_2.jpg",
+            "crinkle_3.jpg",
+            "crinkle_4.jpg",
+            "crinkle_5.jpg"
+        ],
         "imageAlt": "Perfect crop of classic chocolate cake.",
         "description": {
             "short_text": "Deliciously soft and chewy!",
@@ -108,13 +129,74 @@
             "£": null,
             "€": null
         },
-        "images": ["honey_1.jpg", "honey_2.jpg", "honey_3.jpg"], 
+        "images": [
+            "honey_1.jpg",
+            "honey_2.jpg",
+            "honey_3.jpg"
+        ],
         "imageAlt": "Honey Cookies",
         "description": {
             "short_text": "Sweet and chewy honey cookies!",
             "text": "Perfectly sweet and chewy, these cookies are made with real honey for a delightful treat.",
             "allergens": [],
             "category": "Cookies"
+        },
+        "milk": false
+    },
+    {
+        "id": 9,
+        "name": "Chocolate Chip Cookies",
+        "price": {
+            "$": null,
+            "₪": 22,
+            "£": null,
+            "€": null
+        },
+        "images": [
+            "choco_chip_1.jpg",
+            "choco_chip_2.jpg",
+            "choco_chip_3.jpg",
+            "choco_chip_4.jpg",
+            "choco_chip_5.jpg"
+        ],
+        "imageAlt": "Chocolate Chip Cookies",
+        "description": {
+            "short_text": "Classic chocolate chip cookies!",
+            "text": "These classic chocolate chip cookies are a delightful treat for any occasion, made with real chocolate chips for a rich and delicious flavor.",
+            "allergens": [
+                "eggs",
+                "gluten"
+            ],
+            "category": "Cookies"
+        },
+        "milk": false
+    },
+    {
+        "id": 10,
+        "name": "Babke",
+        "price": {
+            "$": null,
+            "₪": 33,
+            "£": null,
+            "€": null
+        },
+        "images": [
+            "babke_1.jpg",
+            "babke_2.jpg",
+            "babke_3.jpg",
+            "babke_4.jpg",
+            "babke_5.jpg",
+            "babke_6.jpg"
+        ],
+        "imageAlt": "Babke",
+        "description": {
+            "short_text": "Decadent chocolate layers in every bite!",
+            "text": "Indulge in our exquisite chocolate babke, a decadent treat featuring layers of rich, velvety chocolate intertwined with soft, fluffy dough. Perfect for any celebration or simply to satisfy your sweet tooth.",
+            "allergens": [
+                "eggs",
+                "gluten"
+            ],
+            "category": "Cakes"
         },
         "milk": false
     }
