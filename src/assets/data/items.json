@@ -199,5 +199,32 @@
             "category": "Cakes"
         },
         "milk": false
+    },
+    {
+        "id": 11,
+        "name": "Jam Cookies",
+        "price": {
+            "$": null,
+            "₪": 22,
+            "£": null,
+            "€": null
+        },
+        "images": [
+            "jam_cookies_1.jpg",
+            "jam_cookies_2.jpg",
+            "jam_cookies_3.jpg",
+            "jam_cookies_4.jpg"
+        ],
+        "imageAlt": "Jam Cookies",
+        "description": {
+            "short_text": "Deliciously soft and chewy!",
+            "text": "These crinkle cookies are a delightful treat with a soft and chewy texture, perfect for any occasion.",
+            "allergens": [
+                "eggs",
+                "gluten"
+            ],
+            "category": "Cookies"
+        },
+        "milk": false
     }
 ]
